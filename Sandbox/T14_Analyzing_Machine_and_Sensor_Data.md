@@ -174,16 +174,15 @@ accomplish three goals with this data:
     In the Sandbox HUE, click the Beeswax (Hive UI) icon in the toolbar
     at the top of the page to display the Query Editor.
 
-    Paste the following script in the Query Editor box, then click
-    **Execute**:
+Paste the following script in the Query Editor box, then click **Execute**:
 
-`CREATE TABLE hvac_temperatures as 
-select    *,    
-targettemp - actualtemp as temp_diff,     
-IF((targettemp - actualtemp) > 5, 'COLD',
-IF((targettemp - actualtemp) < -5, 'HOT', 'NORMAL')) AS temprange,
-IF((targettemp - actualtemp) > 5, '1',         
-IF((targettemp - actualtemp) < -5, '1', 0)) AS extremetempfrom hvac;`
+    CREATE TABLE hvac_temperatures as 
+    select    *,    
+    targettemp - actualtemp as temp_diff,     
+    IF((targettemp - actualtemp) > 5, 'COLD',
+    IF((targettemp - actualtemp) < -5, 'HOT', 'NORMAL')) AS temprange,
+    IF((targettemp - actualtemp) > 5, '1',         
+    IF((targettemp - actualtemp) < -5, '1', 0)) AS extremetempfrom hvac;`
 
 [![](./images/tutorial-14/12_query_editor_hvac_temperatures.jpg?raw=true)](./images/tutorial-14/12_query_editor_hvac_temperatures.jpg?raw=true)
 
@@ -214,10 +213,15 @@ assigned a value of 1; otherwise its value is 0.
     In the Sandbox HUE, click the Beeswax (Hive UI) icon in the toolbar
     at the top of the page to display the Query Editor.
 
-    Paste the following script in the Query Editor box, then click
-    **Execute**:
+Paste the following script in the Query Editor box, then click **Execute**:
 
-    `create table if not exists hvac_building as select h.*, b.country, b.hvacproduct, b.buildingage, b.buildingmgr from building b join hvac_temperatures h on b.buildingid = h.buildingid;`
+    create table if not exists hvac_building as 
+        select h.*, 
+        b.country, 
+        b.hvacproduct, 
+        b.buildingage, 
+        b.buildingmgr 
+    from building b join hvac_temperatures h on b.buildingid = h.buildingid;
 
     [![](./images/tutorial-14/15_query_editor_hvac_building.jpg?raw=true)](./images/tutorial-14/15_query_editor_hvac_building.jpg?raw=true)
 
