@@ -21,7 +21,9 @@ Current tutorials are as follows:
 * [9 - Using Excel 2013 to Analyze Hadoop Data](/Sandbox/T09_Using_Excel_2013_to_Analyze_Hadoop_data.md)
 * [10 - Visualizing Website Clickstream Data](/Sandbox/T10_Visualizing_Website_Clickstream_Data.md)
 * [11 - Installing the Hortonworks ODBC driver on Mac OS X](/Sandbox/T11_Installing_the_Hortonworks_ODBC_driver_on_Mac_OSX.md)
-* [12 - Refining and Visualizing Server Log Data](/Sandbox/T12_Refining_and_Visualizing_Server_Log_Data)
+* [12 - Refining and Visualizing Server Log Data](/Sandbox/T12_Refining_and_Visualizing_Server_Log_Data.md)
+* [13 - Refining and Visualizing Sentiment Data](/Sandbox/T12_Refining_and_Visualizing_Sentiment_Data.md)
+* [14 - Analyzing Machine and Sensor Data](/Sandbox/T14_Analyzing_Machine_and_Sensor_Data.md)
 
 ###Community Tutorials
 
