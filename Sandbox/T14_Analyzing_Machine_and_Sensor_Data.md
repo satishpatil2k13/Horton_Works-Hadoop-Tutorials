@@ -77,7 +77,7 @@ To refine and analyze HVAC sensor data, we will:
 -   You can download the sample sensor data contained in a compressed
     (.zip) folder here:
 
-    [SensorFiles.zip](http://s3.amazonaws.com/hw-sandbox/tutorial15/SensorFiles.zip)
+    [SensorFiles.zip](http://s3.amazonaws.com/hw-sandbox/tutorial14/SensorFiles.zip)
 
 -   Save the SensorFiles.zip file to your computer, then extract the
     files. You should see a SensorFiles folder that contains the
