@@ -34,6 +34,8 @@ RHadoop is set of packages for R language, it contains the next packages current
 * rmr provides MapReduce interface; mapper and reducer can be described in R code and then called from R
 * rhdfs provides access to HDFS; using simple R functions, you can copy data between R memory, the local file system, and HDFS
 * rhbase required if you are going to access HBase  
+* plyrmr common data manipulation operations  
+
 
 ### Instalation
 
@@ -43,11 +45,11 @@ To enable RHadoop on existing Hadoop cluster the following steps must be applied
 3. set up env variables; run R from console and check that these variables are accessable  
 				
 
-Environment variables required for RHadoop is 'HADOOP_CMD' and 'HADOOP_STREAMING', details are described in [RHadoop Wiki](https://github.com/RevolutionAnalytics/RHadoop/wiki/rmr). To facilitate development, RStudio server is recommended to be installed. It provides the same GUI for development as standalone RStudio. RStudio WebUI accessible just after instalation at <host>:8787  
+Environment variables required for RHadoop is 'HADOOP_CMD' and 'HADOOP_STREAMING', details are described in [RHadoop Wiki](https://github.com/RevolutionAnalytics/RHadoop/wiki/rmr). To facilitate development, RStudio server is recommended to be installed. It provides the same GUI for development as standalone RStudio. RStudio WebUI accessible just after instalation at '<host>:8787'  
 
 ### Overview
 
-We age going to predict number of visitors in the next period for each country/state using RHadoop.  
+We age going to predict number of visitors in the next period for each country/state using RHadoop. We will do it with lineral regression
 
 ## Step 1. Create table with required data  
 
@@ -55,6 +57,17 @@ In the “Loading Data into the Hortonworks Sandbox” tutorial, we loaded websi
 
 [![](./images/tutorial-01/Omniture-hive.png?raw=true)](./images/tutorial-01/Omniture-hive.png?raw=true)  
 
-## Step 2. Predict visitors number for new period  
+## Step 2. Prepare Omniture dataset for further regression  
 
-In omniture dataset we have information from 2012-03-01 till 2012-03-15 (Hive query `select country, ts, count(*) from omniture_r group by country, ts`), for many countries there are gups, wich we a going to fill in with 0.
+In omniture dataset we have information from 2012-03-01 till 2012-03-15 (Hive query `select country, ts, count(*) from omniture_r group by country, ts`), for many countries there are gaps, we are going to put 0 into these gaps and remove datasets with only two elements, because of it's not enought for regression. The result of this query is followed:  
+
+[![](./images/tutorial-01/Omniture-hive-res.png?raw=true)](./images/tutorial-01/Omniture-hive-res.png?raw=true)  
+
+We need to save this result for the next step, just by clicking 'Download as CSV'. Save result to HDFS to the folder '/user/hue/hdp/in':  
+
+[![](./images/tutorial-01/Omniture-hdfs-in.png?raw=true)](./images/tutorial-01/Omniture-hdfs-in.png?raw=true)  
+
+
+## Step 3. Predict visitors number for new period  
+
+
