@@ -75,7 +75,7 @@ Please, don't gueess all calculation here as academic research. This "prediction
 [![](./images/tutorial-01/Omniture-hdfs-RSTUDIO.png?raw=true)](./images/tutorial-01/Omniture-hdfs-RSTUDIO.png?raw=true)  
 
 The whole listing is following:  
-'
+
 
     library(rmr2)
 
@@ -144,7 +144,7 @@ The whole listing is following:
           reduce=reducer
     )
 
-'  
+
 
 As soon as MapReduce job finishes, the result will be available at expected directory as several CSV formated files. Directory structure is regular for MapReduce jobs:  
 
