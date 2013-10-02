@@ -76,6 +76,7 @@ Please, don't gueess all calculation here as academic research. This "prediction
 
 The whole listing is following:  
 '
+
     library(rmr2)
 
     # utility function - insert new row into exist data frame
