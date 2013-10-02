@@ -59,7 +59,7 @@ In the “Loading Data into the Hortonworks Sandbox” tutorial, we loaded websi
 
 ## Step 2. Prepare Omniture dataset for further regression  
 
-In omniture dataset we have information from 2012-03-01 till 2012-03-15 (Hive query `select country, ts, count(*) from omniture2 group by country, ts`), for many countries there are gaps, we are going to put 0 into these gaps and remove datasets with only two elements, because of it's not enought for regression. The result of this query is followed:  
+In omniture dataset we have information from 2012-03-01 till 2012-03-15 (Hive query `select country, ts, count(*) from omniture2 group by country, ts`), for many countries there are gaps, we are going to put 0 into these gaps and remove datasets with too small amount of elements, because of it's not enought for regression. The result of this query is following:  
 
 [![](./images/tutorial-01/Omniture-hive-res.png?raw=true)](./images/tutorial-01/Omniture-hive-res.png?raw=true)  
 
