@@ -27,4 +27,6 @@ Current tutorials are as follows:
 
 ###Community Tutorials
 
-* Your turn!
+Feel free to contribute tutorials and help the community harness Hadoop!
+
+* [1 - Using RHadoop to Predict Web Visitors](/Community/T01_RHadoop_visitors_prediction.md) from [mwacc](https://github.com/mwacc)
