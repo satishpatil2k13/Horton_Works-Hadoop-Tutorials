@@ -118,7 +118,7 @@ Cool, but not so interesting, so let's get to Twitter.
 
 ##3 - Create the Tweet Stream in Spring XD
 
-In order to stream in information from Twitter, then you'll need to set-up a Developer app so you can get the necessary keys.
+In order to stream in information from Twitter, then you'll need to set-up a [Twitter Developer app](http://dev.twitter.com) so you can get the necessary keys.
 
 Once you have the keys, you can add them to `XD_HOME\xd\config\twitter.properties`
 
@@ -157,7 +157,7 @@ We're now done with Spring XD. It's a fun way to pull in a [bunch of data from v
 
 ##4 - Refine the Data using Hive
 
-To process and analyze the data, we'll borrow the technique from the previous tutorial. First of all, we can take a look in the File Browser to see the logs we've ingested.
+To process and analyze the data, we'll borrow the technique [from the previous tutorial](../Sandbox/T13_Refining_And_Visualizing_Sentiment_Data.md). First of all, we can take a look in the File Browser to see the logs we've ingested.
 
 ![./images/tutorial-02/screenshot.1.png?raw=true](./images/tutorial-02/screenshot.1.png?raw=true)
 
@@ -175,7 +175,7 @@ In the [previous tutorial](../Sandbox/T13_Refining_And_Visualizing_Sentiment_Dat
 	
 This will place a JAR called `json-serde-1.1.7-jar-with-dependencies.jar` in the `target` folder.
 
-This JAR is needed for the Hive queries we'll perform. To do that, we will create a new query, first loading the JAR by sselecting 'Add File' > 'Upload File' and then finally selecting that JAR for use.
+This JAR is needed for the Hive queries we'll perform. To do that, we will create a new query, first loading the JAR by selecting 'Add File' > 'Upload File' and then finally selecting that JAR for use.
 
 ![./images/tutorial-02/screenshot.5.png?raw=true](./images/tutorial-02/screenshot.5.png?raw=true)
 
