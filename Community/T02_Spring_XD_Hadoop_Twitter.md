@@ -316,7 +316,7 @@ Then we'll create some views that can be used in the sentiment calculations.
 		FROM cyrustweets_clean t 
 		LEFT OUTER JOIN tweets_sentiment s on t.id = s.id;
 		
-Once this job has completed, then a quick browse of the data in `cyrustweetsanalysis` will show the results of the analysis. While I don't think I've advanced the state of data science today, I did learn a great new joke.
+Once this job has completed, then a quick browse of the data in `cyrustweetsanalysis` will show the results of the analysis.
 
 ![./images/tutorial-02/screenshot.7.png?raw=true](./images/tutorial-02/screenshot.7.png?raw=true)
 
