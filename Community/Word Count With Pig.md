@@ -18,4 +18,14 @@ Go to the File Browser tab and upload the .txt file. Take note of the default lo
 
 I put this code together from snippets I found on the web. The key thing here is to make sure your load statement is referencing the location where your file lives and that you specify an output location to store the file. Note: I didn’t create the /pig_wordcount folder before I ran this, the script ended up creating the location which was a handy feature. Just hit execute and sit back, you can check the run status on the query history tab.
 
+### Use HCatalog to load the file to a “table”
+
+Being a SQL developer by day I wanted to be able to query the results in a familiar way so I decided to create a table using HCatalog so that it would be easily accessible through Hive. So I went into the HCatalog tab and chose the file from the folder I specified, named the table and columns, and hit create table. It churned for a while but eventually completed.
+
+### Use Hive to query and sort the data for final output
+
+Finally, I went into the Hive tab and wrote a quick query to return and organize the results. Once it was completed I downloaded it and put the results in Excel so I could print and frame them.
+
+
+
 
