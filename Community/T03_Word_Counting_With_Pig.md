@@ -14,6 +14,8 @@ This can be anything but I ended up using the output of some textual data I had 
 
 Go to the File Browser tab and upload the .txt file. Take note of the default location it is loading to (/user/hue).
 
+![Alt text](./images/tutorial-03/images/screenshot1.png )
+
 ### Write a Pig script to parse the data and dump to a file
 
 I put this code together from snippets I found on the web. The key thing here is to make sure your load statement is referencing the location where your file lives and that you specify an output location to store the file. Note: I didn’t create the /pig_wordcount folder before I ran this, the script ended up creating the location which was a handy feature. Just hit execute and sit back, you can check the run status on the query history tab.
