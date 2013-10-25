@@ -31,4 +31,4 @@ Feel free to contribute tutorials and help the community harness Hadoop!
 
 * [1 - Using RHadoop to Predict Web Visitors](/Community/T01_RHadoop_visitors_prediction.md) from [mwacc](https://github.com/mwacc)
 * [2 - Using Spring XD to stream Tweets to Hadoop for Sentiment Analysis](/Community/T02_Spring_XD_Hadoop_Twitter.md) from [mehzer](https://github.com/mehzer)
-* [3 - Word Counting with Pig](Community/T03_Word_Counting_With_Pig.md/Word Counting with Pig.md) from [flacrosse](https://github.com/flacrosse)
+* [3 - Word Counting with Pig](/Community/T03_Word_Counting_With_Pig.md/Word Counting with Pig.md) from [flacrosse](https://github.com/flacrosse)
