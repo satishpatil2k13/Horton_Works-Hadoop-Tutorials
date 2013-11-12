@@ -90,7 +90,7 @@ You should see something like:
 	
 Once that's confirmed we can set up a simple test stream. In this case, we can re-create TickTock but store it in HDFS.
 
-	stream --name ticktockhdfs --definition "Time | HDFS"
+	stream create --name ticktockhdfs --definition "Time | HDFS"
 	
 Leave it a few seconds, then destroy or undeploy the stream.
 
