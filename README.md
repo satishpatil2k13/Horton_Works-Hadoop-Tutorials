@@ -8,9 +8,9 @@ Please feel free to recommend edits to existing tutorials, and contribute your o
 
 Current tutorials are as follows:
 
-###Sandbox Tutorials (Embedded in Sandbox)
+###Sandbox Tutorials (Embedded in Sandbox and tested with v2.0)
 
-* [1 - Hello World - An Overview of Sandbox with HCatalog, Hive and Pig](/Sandbox/T01_Hello_World_An_Overview_with_HCatalog_Hive_and_Pig.md)
+* [1 - Hello World - Using Sandbox with Hive and Pig](/Sandbox/T01_Hello_World_Using_Sandbox_with_Hive_and_Pig.md)
 * [2 - Data Processing with Pig - Processing Baseball Stats](/Sandbox/T02_Data_Processing_with_Pig.md)
 * [3 - Data Processing with Hive - Processing Baseball Stats](/Sandbox/T03_Data_Processing_with_Hive.md)
 * [4 - HCatalog, Basic Pig and Hive Commands](/Sandbox/T04_HCatalog_Basic_Pig_and_Hive.md)

@@ -1,6 +1,6 @@
-## Tutorial 1: Hello World - An Overview Using the Hortonworks Sandbox with HCatalog, Hive and Pig
+##Tutorial 1: Hello World - Using the Hortonworks Sandbox with Hive and Pig
 
-**This tutorial is from the [Hortonworks Sandbox](http://hortonworks.com/products/sandbox) - a single-node Hadoop cluster running in a virtual machine. Download to run this and other tutorials in the series.**
+**This tutorial is from the [Hortonworks Sandbox 2.0](http://hortonworks.com/products/sandbox) - a single-node Hadoop cluster running in a virtual machine. Download to run this and other tutorials in the series.**
 
 The tutorials are presented in sections as listed below.
 
@@ -10,7 +10,7 @@ The tutorials are presented in sections as listed below.
 -   [A Short Apache Hive Tutorial](#hive)
 -   [Pig Basics Tutorial](#pig)
 
-###<a name="overview"></a>Overview of Apache Hadoop and Hortonworks Data Platform
+### Overview of Apache Hadoop and Hortonworks Data Platform
 
 The Hortonworks Sandbox is a single node implementation of the
 Hortonworks Data Platform(HDP). It is packaged as a virtual machine to
@@ -24,8 +24,7 @@ is free to download and use in your enterprise and you can download it
 here: [Hortonworks Data Platform
 Download](http://hortonworks.com/download/)
 
-[![Yahoo Data
-Nodes](./images/tutorial-1/yahoo_data_nodes-a.png?raw=true)](./images/tutorial-1/yahoo_data_nodes-a.png?raw=true)
+![Yahoo Data Nodes](./images/tutorial-1/yahoo_data_nodes-a.png?raw=true)
 
 The Apache Hadoop projects provide a series of tools designed to solve
 big data problems. The Hadoop cluster implements a parallel computing
@@ -37,8 +36,7 @@ data that it holds. The overall framework for the processing software is
 called MapReduce. Here's a short video introduction to MapReduce:
 [Introduction to MapReduce](http://www.youtube.com/watch?v=ht3dNvdNDzI)
 
-[![Yahoo Map
-Reduce](./images/tutorial-1/yahoo_map_reduce-a.png?raw=true)](./images/tutorial-1/yahoo_map_reduce-a.png?raw=true)
+![Yahoo Map Reduce](./images/tutorial-1/yahoo_map_reduce-a.png?raw=true)
 
 Apache Hadoop can be useful across a range of use cases spanning
 virtually every vertical industry. It is becoming popular anywhere that
@@ -47,6 +45,8 @@ include digital marketing automation, fraud detection and prevention,
 social network and relationship analysis, predictive modeling for new
 drugs, retail in-store behavior analysis, and mobile device
 location-based marketing.
+
+* * * * *
 
 The Hadoop Distributed File System
 ----------------------------------
@@ -62,8 +62,7 @@ of datanodes.
 
 ### Apache Hive™
 
-[![Hive UI
-Overview](./images/tutorial-1/hive_ui_overview-b.jpg?raw=true)](./images/tutorial-1/hive_ui_overview-b.jpg?raw=true)
+![Hive UI Overview](./images/tutorial-1/hive_ui_overview-b.jpg?raw=true)
 
 The Apache Hive project provides a data warehouse view of the data in
 HDFS. Using a SQL-like language Hive lets you create summarizations of
@@ -75,8 +74,7 @@ datanodes and you can manipulate huge datasets.
 
 ### Apache HCatalog
 
-[![HCat UI
-Overview](./images/tutorial-1/hcat_ui_overview-a.jpg?raw=true)](./images/tutorial-1/hcat_ui_overview-a.jpg?raw=true)
+![HCat UI Overview](./images/tutorial-1/hcat_ui_overview-a.jpg?raw=true)
 
 The function of HCatalog is to hold location and metadata about the data
 in a Hadoop cluster. This allows scripts and MapReduce jobs to be
@@ -89,8 +87,7 @@ by name and we can inherit the location and metadata.
 
 ### Apache Pig™
 
-[![Pig UI
-Overview](./images/tutorial-1/pig_ui_overview-a.jpg?raw=true)](./images/tutorial-1/pig_ui_overview-a.jpg?raw=true)
+![Pig UI Overview](./images/tutorial-1/pig_ui_overview-a.jpg?raw=true)
 
 Pig is a language for expressing data analysis and infrastructure
 processes. Pig is translated into a series of MapReduce jobs that are
@@ -102,7 +99,7 @@ process data in a Hadoop cluster.
 That‘s all for now... let‘s get started with some examples of using
 these tools together to solve real problems!
 
-###<a name="usingHDP"></a>Using HDP
+### Using HDP
 
 Here we go! We're going to walk you through a series of step-by-step
 tutorials to get you up and running with the Hortonworks Data
@@ -125,8 +122,8 @@ and save this file to your computer.
 
 You can reach the File Browser by clicking its icon:
 
-[![Pick File
-Browser](./images/tutorial-1/pick_file_browser-a.jpg?raw=true)](./images/tutorial-1/pick_file_browser-a.jpg?raw=true)
+![Pick File
+Browser](./images/tutorial-1/pick_file_browser-a.jpg?raw=true)
 
 The File Browser interface should be familiar to you as it is similar to
 the file manager on a Windows PC or Mac. We begin in our home directory.
@@ -137,8 +134,8 @@ lets us upload files.
 
 To upload the example data you just downloaded,
 
-[![Select File
-Upload](./images/tutorial-1/select_file_upload.jpg?raw=true)](./images/tutorial-1/select_file_upload.jpg?raw=true)
+![Select File
+Upload](./images/tutorial-1/select_file_upload.jpg?raw=true)
 
 -   Select the 'Upload' button
 -   Select 'Files' and a pop-up window will appear.
@@ -148,50 +145,46 @@ Upload](./images/tutorial-1/select_file_upload.jpg?raw=true)](./images/tutorial-
 
 When it is complete you'll see this:
 
-[![Uploaded Stock
-Data](./images/tutorial-1/uploaded_stock_data.jpg?raw=true)](./images/tutorial-1/uploaded_stock_data.jpg?raw=true)
+![Uploaded Stock
+Data](./images/tutorial-1/uploaded_stock_data.jpg?raw=true)
 
 Now click the file name "NYSE-2000-2001.tar.gz". You'll see it,
 displayed in tabular form:
 
-[![View Stock
-Data](./images/tutorial-1/view_stock_data.jpg?raw=true)](./images/tutorial-1/view_stock_data.jpg?raw=true)
+![View Stock Data](./images/tutorial-1/view_stock_data.jpg?raw=true)
 
 You can use File Browser just like your own computer's file manager.
 Next register the dataset with HCatalog.
 
-###<a name="loading"></a>Loading the sample data into HCatalog
+### Loading the sample data into HCatalog
 
 Now that we've uploaded a file to HDFS, we will register it with
 HCatalog to be able to access it in both Pig and Hive.
 
 Select the HCatalog icon in the icon bar at the top of the page:
 
-[![Select
-HCat](./images/tutorial-1/select_hcat.jpg?raw=true)](./images/tutorial-1/select_hcat.jpg?raw=true)
+![Select HCat](./images/tutorial-1/select_hcat.jpg?raw=true)
 
 Select "Create a new table from file" from the Actions menu on the left.
 
-[![HCat Create
-Table](./images/tutorial-1/hcat_create_table.jpg?raw=true)](./images/tutorial-1/hcat_create_table.jpg?raw=true)
+![HCat Create Table](./images/tutorial-1/hcat_create_table.jpg?raw=true)
 
-Fill in the Table Name field with 'nyse\_stocks'. Then click on Choose a
+Fill in the Table Name field with 'nyse_stocks'. Then click on Choose a
 file button. Select the file we just uploaded 'NYSE-2000-2001.tsv.gz'.
 
-[![HCat Choose
-File](./images/tutorial-1/hcat_choose_file-b.jpg?raw=true)](./images/tutorial-1/hcat_choose_file-b.jpg?raw=true)
+![HCat Choose File](./images/tutorial-1/hcat_choose_file-b.jpg?raw=true)
 
 You will now see the options for importing your file into a table. The
 File options should be fine. In Table preview set all text type fields
 to Column Type 'string' and all decimal fields (ex: 12.55) to Column
-Type 'float.' The one exception is 'stock\_volume' field should be set
+Type 'float.' The one exception is 'stock_volume' field should be set
 as 'bigint.' When everything is complete click on the "Create Table"
 button at the bottom.
 
-[![HCat Define
-Columns](./images/tutorial-1/hcat_define_columns.jpg?raw=true)](./images/tutorial-1/hcat_define_columns.jpg?raw=true)
+![HCat Define
+Columns](./images/tutorial-1/hcat_define_columns.jpg?raw=true)
 
-###<a name="hive"></a>A Short Apache Hive Tutorial
+### A Short Apache Hive Tutorial
 
 In the previous sections you:
 
@@ -207,9 +200,9 @@ Sandbox called Beeswax. Beeswax gives us an interactive interface to
 Hive. We can type in queries and have Hive evaluate them for us using a
 series of MapReduce jobs.
 
-Let‘s open Beeswax. Click on the bee icon on the top bar.
+Let's open Beeswax. Click on the bee icon on the top bar.
 
-[![Beeswax](./images/tutorial-1/1-beeswax.jpg?raw=true)](./images/tutorial-1/1-beeswax.jpg?raw=true)
+![Beeswax](./images/tutorial-1/1-beeswax.jpg?raw=true)
 
 On the right hand side there is a query window and an execute button. We
 will be typing our queries in the query window. When you are done with a
@@ -221,55 +214,50 @@ Since we created our table in HCatalog, Hive automatically knows about
 it. We can see the tables that Hive knows about by clicking on the
 Tables tab.
 
-[![Tables](./images/tutorial-1/2-tables.jpg?raw=true)](./images/tutorial-1/2-tables.jpg?raw=true)
+![Tables](./images/tutorial-1/2-tables.jpg?raw=true)
 
-In the list of the tables you will see our table, `nyse\_stocks`. Hive
+In the list of the tables you will see our table, `nyse_stocks`. Hive
 inherits the schema and location information from HCatalog. This
 separates meta information like schema and location from the queries. If
 we did not have HCatalog we would have to build the table by providing
 location and schema information.
 
-We can see the records by typing `Select \* from nyse\_stocks` in the
-Query window. [![Data
-Table](./images/tutorial-1/3a-select*query.jpg?raw=true)](./images/tutorial-1/3a-select*query.jpg?raw=true)
-Our results would be:
+We can see the records by typing `Select * from nyse_stocks` in the
+Query window. Our results would be:
 
-[![Data
-Table](./images/tutorial-1/3-data-table.jpg?raw=true)](./images/tutorial-1/3-data-table.jpg?raw=true)
+![Data Table](./images/tutorial-1/3-data-table.jpg?raw=true)
 
-We can see the columns in the table by executing `describe nyse\_stocks`
+We can see the columns in the table by executing `describe nyse_stocks`
 
-[![NYSE](./images/tutorial-1/4-describe-nyse_stocks.jpg?raw=true)](./images/tutorial-1/4-describe-nyse_stocks.jpg?raw=true)
+![NYSE](./images/tutorial-1/4-describe-nyse_stocks.jpg?raw=true)
 
 We will then get a description of the nyse table.
 
-[![Describe NYSE
-Table](./images/tutorial-1/5-describe-nyse_stocks-results.jpg?raw=true)](./images/tutorial-1/5-describe-nyse_stocks-results.jpg?raw=true)
+![Describe NYSE
+Table](./images/tutorial-1/5-describe-nyse_stocks-results.jpg?raw=true)
 
-We can count the records with the query `select count(\*) from
-nyse\_stocks`. You can click on the Beeswax icon to get back to the
-query screen. Evaluate the expression by typing it in the query window
-and hitting execute.
+We can count the records with the query
+`select count(*) from                   nyse_stocks`. You can click on
+the Beeswax icon to get back to the query screen. Evaluate the
+expression by typing it in the query window and hitting execute.
 
-[![Select
-Count](./images/tutorial-1/select-count.jpg?raw=true)](./images/tutorial-1/select-count.jpg?raw=true)
+![Select Count](./images/tutorial-1/select-count.jpg?raw=true)
 
 This job takes longer and you can watch the job running in the log. When
 the job is complete you will see the results posted in the Results tab.
 
-[![Select Count
-Results](./images/tutorial-1/select-count-results.jpg?raw=true)](./images/tutorial-1/select-count-results.jpg?raw=true)
+![Select Count
+Results](./images/tutorial-1/select-count-results.jpg?raw=true)
 
-You can select specific records by using a query like `select \* from
-nyse\_stocks where stock\_symbol="IBM"`.
+You can select specific records by using a query like
+`select * from                   nyse_stocks where stock_symbol="IBM"`.
 
-[![Select
-IBM](./images/tutorial-1/select-IBM.jpg?raw=true)](./images/tutorial-1/select-IBM.jpg?raw=true)
+![Select IBM](./images/tutorial-1/select-IBM.jpg?raw=true)
 
 This will return the records with IBM.
 
-[![Select IBM
-Results](./images/tutorial-1/select-ibm-results.jpg?raw=true)](./images/tutorial-1/select-ibm-results.jpg?raw=true)
+![Select IBM
+Results](./images/tutorial-1/select-ibm-results.jpg?raw=true)
 
 So we have seen how we can use Apache Hive to easily query our data in
 HDFS using the Apache Hive query language. We took full advantage of
@@ -279,7 +267,7 @@ like SQL to immediately become productive with Apache Hadoop. Once they
 know the schema of the data can they quickly and easily formulate
 queries.
 
-###<a name="pig"></a>Pig Basics Tutorial
+### Pig Basics Tutorial
 
 In this tutorial we create and run Pig scripts. On the left is a list of
 scripts that we have created. In the middle is an area for us to compose
@@ -309,18 +297,18 @@ I/O statements, HCatLoader() and Python user defined functions.
 At the very bottom are status areas that will show the results of our
 script and log files
 
-[![PIG
-UI](./images/tutorial-1/PigUI.jpeg)](./images/tutorial-1/PigUI.jpeg)
+![PIG UI](./images/tutorial-1/PigUI.jpeg)
 
 ### Step 1: Create and name the script
 
 -   Open the Pig interface by clicking the Pig icon at the top of the
-    screen\
+    screen
 
-    [![Image001-1](./images/tutorial-1/image001.1.jpg?raw=true)](./images/tutorial-1/image001.1.jpg?raw=true)
--   Title your script by filling in the title box\
+    ![Image001-1](./images/tutorial-1/image001.1.jpg?raw=true)
 
-    [![Image001-2](./images/tutorial-1/image001.2.jpg?raw=true)](./images/tutorial-1/image001.2.jpg?raw=true)
+-   Title your script by filling in the title box
+
+    ![Image001-2](./images/tutorial-1/image001.2.jpg?raw=true)
 
 ### Step 2: Loading the data
 
@@ -336,21 +324,18 @@ processing the table.
 
 -   On the right hand side we can start adding our code at Line 1
 -   We can use the Pig helper at the bottom of the screen to give us a
-    template for the line. Click on `Pig helper -\> HCatalog-\>load
-    template`
--   The entry `%TABLE%` is highlighted in red for us. Type the name of the
-    table which is `nyse-stocks`.
--   Remember to add the `a = ` before the template. This saves the
+    template for the line. Click on
+    `Pig helper -> HCatalog->load                 template`
+-   The entry `%TABLE%` is highlighted in red for us. Type the name of
+    the table which is `nyse-stocks`.
+-   Remember to add the `a =` before the template. This saves the
     results into `a`. Note the `= has to have a space before and after
     it.
 
 Our completed line of code will look like:
 
-    a = LOAD 'nyse_stocks' using org.apache.hcatalog.pig.HCatLoader();
-
-
-[![Line
-1](./images/tutorial-1/line1.jpeg)](./images/tutorial-1/line1.jpeg)
+`a = LOAD 'nyse_stocks' using org.apache.hcatalog.pig.HCatLoader();`
+![Line 1](./images/tutorial-1/line1.jpeg)
 
 So now we have our table loaded into Pig and we stored it "`a`"
 
@@ -359,60 +344,55 @@ So now we have our table loaded into Pig and we stored it "`a`"
 The next step is to select a subset of the records so that we just have
 the records for stock ticker of IBM. To do this in Pig we use the Filter
 operator. We tell Pig to Filter our table and keep all records where
-stock\_symbol="IBM" and store this in b. With this one simple statement
+stock_symbol="IBM" and store this in b. With this one simple statement
 Pig will look at each record in the table and filter out all the ones
 that do not meet our criteria. The group statement is important because
 it groups the records by one or more relations. In this case we just
 specified all rather than specify the exact relation we need.
 
--   We can use Pig Help again by clicking on `Pig helper-\>Data
-    processing functions-\>FILTER` template
+-   We can use Pig Help again by clicking on
+    `Pig helper->Data                 processing functions->FILTER`
+    template
 -   We can replace `%VAR%` with "`a`" (hint: tab jumps you to the next
     field)
--   Our `%COND% is "`stock\_symbol =='IBM'` " (note: single quotes are
+-   Our `%COND% is "`stock_symbol =='IBM'` " (note: single quotes are
     needed around IBM and don't forget the trailing semi-colon)
--   `Pig helper -\> Data processing functions-\>GROUP BY` template
--   The first `%VAR% is "`b`" and the second `%VAR%` is "`all`". You will need to
-    correct an irregularity in the Pig syntax here. Remove the "`BY`" in
-    the line of code.
+-   `Pig helper -> Data processing functions->GROUP BY` template
+-   The first
+    `%VAR% is "`b`" and the second`%VAR%`is "`all`". You will need to                 correct an irregularity in the Pig syntax here. Remove the "`BY`"
+    in the line of code.
 -   Again add the trailing semi-colon to the code.
 
 So the final code will look like:
 
+`b = filter a by stock_symbol == 'IBM'; c = group b all;                 `
+![Line 3](./images/tutorial-1/line3.jpeg)
 
-    b = filter a by stock_symbol == 'IBM';
-    c = group b all;
-                    
-[![Line
-3](./images/tutorial-1/line3.jpeg)](./images/tutorial-1/line3.jpeg)
-
-Now we have extracted all the records with IBM as the stock\_symbol.
+Now we have extracted all the records with IBM as the stock_symbol.
 
 ### Step 4: Iterate and Average
 
 Now that we have the right set of records we can iterate through them
 and create the average. We use the "foreach" operator on the grouped
 data to iterate through all the records. The AVG() function creates the
-average of the stock\_volume field. To wind it up we just print out the
+average of the stock_volume field. To wind it up we just print out the
 results which will be a single floating point number. If our results
 would be used for a future job we can save it back into a table.
 
--  `Pig helper -\>Data Processing functions-\>FOREACH` template will get
+-   `Pig helper ->Data Processing functions->FOREACH` template will get
     us the code
--   Our first `%VAR%` is `c` and the second `%VAR%` is "`AVG(b.stock\_volume);`"
--   We add the last line with `Pig helper-\>I/O-\>DUMP` template and
+-   Our first `%VAR%` is `c` and the second `%VAR%` is
+    "`AVG(b.stock_volume);`"
+-   We add the last line with `Pig helper->I/O->DUMP` template and
     replace `%VAR%` with "`d`".
 
 Our last two lines of the script will look like:
 
-    d = foreach c generate AVG(b.stock_volume);
-    dump d;
-                    
-[![Line
-5](./images/tutorial-1/line5.jpeg)](./images/tutorial-1/line5.jpeg)
+`d = foreach c generate AVG(b.stock_volume); dump d;                 `
+![Line 5](./images/tutorial-1/line5.jpeg)
 
-So the variable "`d`" will contain the average volume of IBM stock when this
-line is executed.
+So the variable "`d`" will contain the average volume of IBM stock when
+this line is executed.
 
 ### Step 5: Save the script and Execute it
 
@@ -427,11 +407,11 @@ that shows the job status.
     things are running.
 -   When the job completes you will see the results in the green box.
 -   Click on the Logs link to see what happened when your script ran.he
-    average of stock\_volume This is where you will see any error
+    average of stock_volume This is where you will see any error
     messages. The log may scroll below the edge of your window so you
     may have to scroll down.
 
-[![Final](./images/tutorial-1/final.jpeg)](./images/tutorial-1/final.jpeg)
+![Final](./images/tutorial-1/final.jpeg)
 
 ### Summary
 
@@ -439,7 +419,7 @@ Now we have a complete script that computes the average volume of IBM
 stock. You can download the results by clicking on the green download
 icon above the green box.
 
-[![Answer](./images/tutorial-1/answer.jpeg)](./images/tutorial-1/answer.jpeg)
+![Answer](./images/tutorial-1/answer.jpeg)
 
 If you look at what our script has done, you see in Line 5 we:
 
@@ -448,8 +428,14 @@ If you look at what our script has done, you see in Line 5 we:
     that needs to change in the future we would not have to rewrite our
     script.
 -   Pig then went through all the rows in the table and discarded the
-    ones where the stock\_symbol field is not IBM
+    ones where the stock_symbol field is not IBM
 -   Then an index was built for the remaining records
--   The average of stock\_volume was calculated on the records
+-   The average of stock_volume was calculated on the records
 
 We did it with 5 lines of Pig script code!
+
+**Feedback**
+
+We are eager to hear your feedback on this tutorial. Please let us know
+what you think. [Click here](https://www.surveymonkey.com/s/JBQVM7B) to
+take survey
