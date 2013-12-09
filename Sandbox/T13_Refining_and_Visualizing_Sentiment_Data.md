@@ -45,9 +45,9 @@ An enterprise may analyze sentiment about:
 Refer to:
 
 -   [Tutorial 7: Installing and Configuring the Hortonworks ODBC driver
-    on Windows 7](107.html)
+    on Windows 7](T07_Installing_the_Hortonworks_ODBC_Driver_on_Windows_7.md)
 -   [Tutorial 11: Installing and Configuring the Hortonworks ODBC driver
-    on Mac OS X](111.html)
+    on Mac OS X](T11_Installing_the_Hortonworks_ODBC_driver_on_Mac_OSX.md)
 -   Microsoft Excel 2013 Professional Plus
 -   Sentiment tutorial files (included)
 
