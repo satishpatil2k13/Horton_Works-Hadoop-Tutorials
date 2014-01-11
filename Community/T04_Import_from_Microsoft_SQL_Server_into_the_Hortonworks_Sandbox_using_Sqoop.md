@@ -17,7 +17,7 @@ When you create this user make sure to put on your DBA hat and grant all the per
 #### Enable Mixed Mode Authentication
 
 Make sure Mixed Mode Authentication is enabled at the server level so that the new user can connect.
-screenshot02
+![Alt text](./images/tutorial-04/images/screenshot02.png)
 
 #### Enable TCP/IP Network Protocol
 
