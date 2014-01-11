@@ -13,11 +13,13 @@ On the SQL Server side there are a few key settings that need to be configured t
 #### Create a login using SQL Server Authentication
 
 When you create this user make sure to put on your DBA hat and grant all the permissions necessary to connect and access the data (Server Roles, User Mapping)
+![Alt text](./images/tutorial-04/screenshot01.png)
+
 
 #### Enable Mixed Mode Authentication
 
 Make sure Mixed Mode Authentication is enabled at the server level so that the new user can connect.
-![Alt text](./images/tutorial-04/images/screenshot02.png)
+![Alt text](./images/tutorial-04/screenshot02.png)
 
 #### Enable TCP/IP Network Protocol
 
@@ -34,10 +36,12 @@ SELECT
 
 If the code returns Shared Memory as the net_transport (as shown below), you’ll need to go into the SQL Server Configuration Manager, disable Shared Memory, make sure TCP/IP is enabled, and reboot the server.
 
-screenshot03
+![Alt text](./images/tutorial-04/screenshot03.png)
 
 Once you have Shared Memory disabled the code should return an IP address. Make note of the IP address and the Local TCP Port number as we’ll be using them later in the Sqoop connection string.
-screenshot04
+
+![Alt text](./images/tutorial-04/screenshot04.png)
+
 NOTE: It’s probably a good idea at this point to make sure the user is able to connect to the server and access some data. Log in through Management Studio with the credentials and do a SELECT against a table you want to import. If you can’t get to the data this way, Sqoop isn’t going to be able either.
 
 ### Preparing the Hortonworks Sandbox
@@ -47,9 +51,11 @@ By default, the Microsoft SQL Server JDBC driver is not included in the Sqoop li
 #### Login To the Virtual Machine
 
 With the Sandbox running, jump into the shell by hitting Alt+F5
-screenshot05
+![Alt text](./images/tutorial-04/screenshot05.png)
+
 The login and password are root/hadoop and will get you to the following screen
-screenshot06
+![Alt text](./images/tutorial-04/screenshot06.png)
+
 #### Download the SQL Server JDBC Driver
 
 Enter the following command to get to the /usr/local directory
@@ -61,7 +67,8 @@ Download and unzip the driver
 curl -L 'http://download.microsoft.com/download/0/2/A/02AAE597-3865-456C-AE7F-613F99F850A8/sqljdbc_4.0.2206.100_enu.tar.gz' | tar xz
 ```
 You should now see a folder in the directory called sqljdbc_4.0 when you run the ls command.
-screenshot07
+![Alt text](./images/tutorial-04/screenshot07.png)
+
 #### Copy the driver to the Sqoop library
 
 While still in the/usr/local/ directory run the following command to copy the driver out to the Sqoop library folder
@@ -72,7 +79,7 @@ Once this runs you should be able to see the driver in the list of available Sqo
 ```
 cd /usr/lib/sqoop/lib
 ```
-screenshot08
+![Alt text](./images/tutorial-04/screenshot08.png)
 
 Now that the driver has been added I recommend restarting the Sandbox completely. I’m sure there are ways to restart certain services so that the new driver becomes available but I had a much easier time just rebooting before continuing on.
 
@@ -92,7 +99,7 @@ sqoop list-databases --connect jdbc:sqlserver://192.168.56.1:1433 --username had
 ```
 With that command, Sqoop should return a listing of all the available databases to connect to.
 
-screenshot09
+![Alt text](./images/tutorial-04/screenshot09.png)
 
 #### Import a Table into Hive
 
@@ -104,13 +111,13 @@ So for my import I end up with the following connection string
 ```
 sqoop import --connect "jdbc:sqlserver://192.168.56.1:1433;database=AdentureWorks2008R2;username=hadoop;password=hadoop1" --table SalesOrderDetail --hive-import -- --schema Sales
 ```
-screenshot10
+![Alt text](./images/tutorial-04/screenshot10.png)
 
 Note: the schema argument is specific to the driver and must be passed at the end of the command after an empty — argument. If you are importing from the default schema of the database (like dbo) you do not need to specify the schema with this additional argument.
 
 After you execute the command Hadoop is going to go to work and kick off a MapReduce job. You’ll see a lot of information flying past your eyes, but eventually you be left with the following results indicating your table has been successfully imported. (Use Shift+PageUp/PageDown if you want navigate through the command prompt information that flew past which is especially useful in debugging).
 
-screenshot11
+![Alt text](./images/tutorial-04/screenshot11.png)
 
 #### Querying the Results
 
@@ -118,9 +125,9 @@ At this point we’re ready to query the Hive table through Beeswax. Go back int
 ```sql
 SELECT * FROM SalesOrderDetail
 ```
-screenshot13
+![Alt text](./images/tutorial-04/screenshot13.png)
 
-screenshot14
+![Alt text](./images/tutorial-04/screenshot14.png)
 
 ### Conclusion
 
