@@ -1,0 +1,32 @@
+
+[
+    {
+        "id": 0,
+        "age": 38,
+        "name": "Hill Good",
+        "gender": "male",
+        "tags": [
+            "amet",
+            "Lorem",
+            "aliquip",
+            "non",
+            "culpa",
+            "aute",
+            "reprehenderit"
+        ],
+        "friends": [
+            {
+                "id": 0,
+                "name": "Garrett Ware"
+            },
+            {
+                "id": 1,
+                "name": "Araceli Ingram"
+            },
+            {
+                "id": 2,
+                "name": "Wilcox Chang"
+            }
+        ],
+    }
+]
