@@ -85,7 +85,7 @@ Now that the driver has been added I recommend restarting the Sandbox completely
 
 ### Transfer data using Sqoop
 
-Now we’re finally ready to use Sqoop to connect to SQL and pull data out of Microsoft’s sample AdventureWorks database.
+Now we’re finally ready to use Sqoop to connect to SQL and pull data out of Microsoft’s sample [AdventureWorks](http://msftdbprodsamples.codeplex.com/releases/view/59211) database.
 
 #### Build the connection string
 
@@ -113,7 +113,7 @@ sqoop import --connect "jdbc:sqlserver://192.168.56.1:1433;database=AdentureWork
 ```
 ![Alt text](./images/tutorial-04/screenshot10.png)
 
-Note: the schema argument is specific to the driver and must be passed at the end of the command after an empty — argument. If you are importing from the default schema of the database (like dbo) you do not need to specify the schema with this additional argument.
+Note: the schema argument is specific to the driver and must be passed at the end of the command after an empty -- (dash dash) argument. If you are importing from the default schema of the database (like dbo) you do not need to specify the schema with this additional argument.
 
 After you execute the command Hadoop is going to go to work and kick off a MapReduce job. You’ll see a lot of information flying past your eyes, but eventually you be left with the following results indicating your table has been successfully imported. (Use Shift+PageUp/PageDown if you want navigate through the command prompt information that flew past which is especially useful in debugging).
 
@@ -131,4 +131,4 @@ SELECT * FROM SalesOrderDetail
 
 ### Conclusion
 
-Sqoop is a powerful tool and can be used with RDBMS systems to provide a number of benefits including incremental imports and exports as well as loads to HBase. You can find out more by checking out the Apache Sqoop project page.
+Sqoop is a powerful tool and can be used with RDBMS systems to provide a number of benefits including incremental imports and exports as well as connectivity to HBase. You can find out more by checking out the [Apache Sqoop](http://sqoop.apache.org/) project page.
