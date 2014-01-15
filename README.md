@@ -32,3 +32,4 @@ Feel free to contribute tutorials and help the community harness Hadoop!
 * [1 - Using RHadoop to Predict Web Visitors](/Community/T01_RHadoop_visitors_prediction.md) from [mwacc](https://github.com/mwacc)
 * [2 - Using Spring XD to stream Tweets to Hadoop for Sentiment Analysis](/Community/T02_Spring_XD_Hadoop_Twitter.md) from [mehzer](https://github.com/mehzer)
 * [3 - Word Counting with Pig](/Community/T03_Word_Counting_With_Pig.md) from [flacrosse](https://github.com/flacrosse)
+* [4 - Import from Microsoft SQL Server into the Hortonworks Sandbox using Sqoop](/Community/T04_Import_from_Microsoft_SQL_Server_into_the_Hortonworks_Sandbox_using_Sqoop.md) from [flacrosse](https://github.com/flacrosse)
