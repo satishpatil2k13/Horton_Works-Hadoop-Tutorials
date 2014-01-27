@@ -37,19 +37,19 @@ RHadoop is set of packages for R language, it contains the next packages current
 * plyrmr common data manipulation operations  
 
 
-### Instalation
+### Installation
 
 To enable RHadoop on existing Hadoop cluster the following steps must be applied:
 1. install R on each node in Cluster
 2. on each node install RHadoop packages with dependencies
-3. set up env variables; run R from console and check that these variables are accessable  
+3. set up env variables; run R from console and check that these variables are accessible  
 				
 
 Environment variables required for RHadoop is 'HADOOP_CMD' and 'HADOOP_STREAMING', details are described in [RHadoop Wiki](https://github.com/RevolutionAnalytics/RHadoop/wiki/rmr). To facilitate development, RStudio server is recommended to be installed. It provides the same GUI for development as standalone RStudio. RStudio WebUI accessible just after instalation at '<host>:8787', use login and password of any non-system user on this host.    
 
 ### Overview
 
-We age going to predict number of visitors in the next period for each country/state using RHadoop. We will do it with lineral regression
+We are going to predict number of visitors in the next period for each country/state using RHadoop. We will do it with linear regression
 
 ## Step 1. Create table with required data  
 
@@ -70,7 +70,7 @@ We need to save this result for the next step, just by clicking 'Download as CSV
 
 ## Step 3. Predict visitors number for the further period  
 
-Please, don't gueess all calculation here as academic research. This "prediction" has only one purpose to show the power of RHadoop. So, let's open RStudio and write first MapReduce with RHadoop. RStudion on local environment can be used as well as web UI (available at '<host>:8787' under your non-system user). In the initial data set, number of clicks for each day (with possible gaps) is present from Mart 3 till Mart 15. The number of click for the Mart 16 is forecasted in the next program  
+Please, don't guess all calculation here as academic research. This "prediction" has only one purpose to show the power of RHadoop. So, let's open RStudio and write first MapReduce with RHadoop. RStudio on local environment can be used as well as web UI (available at '<host>:8787' under your non-system user). In the initial data set, number of clicks for each day (with possible gaps) is present from Mart 3 till Mart 15. The number of click for the Mart 16 is forecasted in the next program  
 
 [![](./images/tutorial-01/Omniture-hdfs-RSTUDIO.png?raw=true)](./images/tutorial-01/Omniture-hdfs-RSTUDIO.png?raw=true)  
 
