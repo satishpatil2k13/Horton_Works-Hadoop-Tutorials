@@ -33,3 +33,4 @@ Feel free to contribute tutorials and help the community harness Hadoop!
 * [2 - Using Spring XD to stream Tweets to Hadoop for Sentiment Analysis](/Community/T02_Spring_XD_Hadoop_Twitter.md) from [mehzer](https://github.com/mehzer)
 * [3 - Word Counting with Pig](/Community/T03_Word_Counting_With_Pig.md) from [flacrosse](https://github.com/flacrosse)
 * [4 - Import from Microsoft SQL Server into the Hortonworks Sandbox using Sqoop](/Community/T04_Import_from_Microsoft_SQL_Server_into_the_Hortonworks_Sandbox_using_Sqoop.md) from [flacrosse](https://github.com/flacrosse)
+* [5 - Use HDFS Explorer to Manage Files on Hortonworks Sandbox](/Community/T05_Use_HDFS_Explorer_To_Manage_Files_On_The_Hortonworks_Sandbox.md) from [RedGate](http://redgate.com)
