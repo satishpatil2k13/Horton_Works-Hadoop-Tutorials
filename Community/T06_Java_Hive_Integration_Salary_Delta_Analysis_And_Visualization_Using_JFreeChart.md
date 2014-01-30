@@ -31,15 +31,15 @@ To follow the steps in this tutorial, your computer must have the following item
 ####Hortonworks Sandbox - Port Forwarding Setup
 By default, the port mapping for the Hive2 service of Hortonworks sandbox is missing in the Virtualbox entries.  Lets go and create that one.
 
-1. Right click the Virtual Machine in the Virtualbox and select "Settings".
+Right click the Virtual Machine in the Virtualbox and select "Settings".
 
 ![Virtualbox VM](images/tutorial-06/1_screenshot_virtualbox.jpg "Virtualbox VM")
 
-2. In the Settings dialog box, choose "Network" section and click on "Port Forwarding" button.
+In the Settings dialog box, choose "Network" section and click on "Port Forwarding" button.
 
 ![Settings](images/tutorial-06/2_screenshot_vm_settings.jpg "Settings")
 
-3. Add a new entry in the "Port Forwarding Rules" for hive (hive-tcp-2200-10000) as shown in the figure below.
+Add a new entry in the "Port Forwarding Rules" for hive (hive-tcp-2200-10000) as shown in the figure below.
 
 ![Port Forwarding](images/tutorial-06/3_screenshot_port_forwarding.jpg "Port Forwarding")
 
