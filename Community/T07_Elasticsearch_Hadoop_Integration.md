@@ -28,14 +28,17 @@ Launch elasticsearch. We won't enter in details on how Elasticsearch works here 
 ####Hortonworks Sandbox
 Download and launch the sandbox. It should show a screen like this one : 
 ![Sandbox start screen](images/tutorial-07/sandbox.png)
+
 Then connect to your sandbox (root user) and set your ```/etc/hosts``` so that it knows your elasticsearch cluster ip.
 
 #### In your browser
-You can now connect to the sandbox using your favorite browser at http://127.0.0.0.1:8000.
+You can now connect to the sandbox using your favorite browser at http://127.0.0.0.1:8000. You should see this screen : ![Sandbox welcome screen](images/tutorial-07/welcome_screen.png)
+
+Click on "Got to sandbox", then follow these steps : 
 
 1. In file browser, upload apache.zip (and note the path - for my exemple it will be ```/user/apache```)
 2. Still in file browser, upload elasticsearch-hadoop jar (as for now elasticsearch-hadoop-1.3.0.M1.jar)
-2. In Hive Query Editor, add elasticsearch-hadoop to your query
+2. In Hive Query Editor, add elasticsearch-hadoop jar to your query
 3. Then launch the following query (from [Costin Leau tutorial](https://gist.github.com/costin/8025827))
 ``` sql
 CREATE TABLE logs (type STRING, time STRING, ext STRING, ip STRING, req STRING, res INT, bytes INT, phpmem INT, agent STRING)
@@ -43,11 +46,41 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
 LOAD DATA INPATH '/demo/apache.log' OVERWRITE INTO TABLE logs;
  
 CREATE EXTERNAL TABLE eslogs (time STRING, extension STRING, clientip STRING, request STRING, response INT, agent STRING)
-STORED BY 'org.elasticsearch.hadoop.hive.ESStorageHandler'
+STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
 TBLPROPERTIES('es.resource' = 'demo/hive',
-'es.mapping.names' = 'time:@timestamp');
+'es.mapping.names' = 'time:@timestamp',
+'es.nodes' = 'your_es_cluster_hostname');
  
 INSERT OVERWRITE TABLE eslogs SELECT s.time, s.ext, s.ip, s.req, s.res, s.agent FROM logs s;
 ```
 
-You should now have you data injected in your elasticsearch cluster.
+You should now have you data injected in your elasticsearch cluster. (Note : I had to run queries seperatly).
+
+To check if everything went well, you can now launch Kibana, set it up to crawl ```demo``` index, and you should be done.
+
+#### Query data from elasticsearch
+Next step is to query data from elasticsearch and use it in Hadoop. Back to your sandbox : 
+1. In Hive Query Editor, add elasticsearch-hadoop jar to your query
+2. Then launche the following query
+``` sql
+CREATE EXTERNAL TABLE logses (
+    time  TIMESTAMP,
+    extension    STRING,
+    clientip STRING,
+    request STRING,
+    response BIGINT, 
+    agent STRING)
+STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
+TBLPROPERTIES('es.resource' = 'demo/hive/', 
+'es.nodes' = 'uc403496vw7scl.siege.axa-fr.intraxa', 
+'es.mapping.names' = 'time:@timestamp');
+
+-- stream data from Elasticsearch
+SELECT * FROM logses;
+```
+
+If everything wen OK, , you should see something like this : 
+![Results from ES](images/tutorial-07/logsFromEs.png)
+
+#### Hive Query Editor Screenshot
+![Hive Query Editor Screenshot](images/tutorial-07/hiveQueryEditor.png)
