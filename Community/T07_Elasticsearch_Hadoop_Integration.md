@@ -79,7 +79,7 @@ TBLPROPERTIES('es.resource' = 'demo/hive/',
 SELECT * FROM logses;
 ```
 
-If everything wen OK, , you should see something like this : 
+If everything went OK, , you should see something like this : 
 ![Results from ES](images/tutorial-07/logsFromEs.png)
 
 #### Hive Query Editor Screenshot
