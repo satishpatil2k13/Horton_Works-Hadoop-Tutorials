@@ -34,7 +34,7 @@ Then connect to your sandbox (root user) and set your ```/etc/hosts``` so that i
 #### In your browser
 You can now connect to the sandbox using your favorite browser at http://127.0.0.0.1:8000. You should see this screen : ![Sandbox welcome screen](images/tutorial-07/welcome_screen.png)
 
-Click on "Got to sandbox", then follow these steps : 
+Click on "Go to sandbox", then follow these steps : 
 
 1. In file browser, upload apache.zip (and note the path - for my exemple it will be ```/user/apache```)
 2. Still in file browser, upload elasticsearch-hadoop jar (as for now elasticsearch-hadoop-1.3.0.M1.jar)
@@ -43,7 +43,7 @@ Click on "Got to sandbox", then follow these steps :
 ``` sql
 CREATE TABLE logs (type STRING, time STRING, ext STRING, ip STRING, req STRING, res INT, bytes INT, phpmem INT, agent STRING)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
-LOAD DATA INPATH '/demo/apache.log' OVERWRITE INTO TABLE logs;
+LOAD DATA INPATH '/user/apache/apache.log' OVERWRITE INTO TABLE logs;
  
 CREATE EXTERNAL TABLE eslogs (time STRING, extension STRING, clientip STRING, request STRING, response INT, agent STRING)
 STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
@@ -72,7 +72,7 @@ CREATE EXTERNAL TABLE logses (
     agent STRING)
 STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
 TBLPROPERTIES('es.resource' = 'demo/hive/', 
-'es.nodes' = 'uc403496vw7scl.siege.axa-fr.intraxa', 
+'es.nodes' = 'your-es-cluster-hostname', 
 'es.mapping.names' = 'time:@timestamp');
 
 -- stream data from Elasticsearch
