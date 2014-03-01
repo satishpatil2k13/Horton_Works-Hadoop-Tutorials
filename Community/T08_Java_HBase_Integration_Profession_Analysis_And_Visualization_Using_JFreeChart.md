@@ -1,4 +1,4 @@
-## Community Tutorial 07: Java-HBase Integration - Professional Analysis and Visualization Using HBase, Java and JFreeChart
+## Community Tutorial 08: Java-HBase Integration - Professional Analysis and Visualization Using HBase, Java and JFreeChart
 
 This tutorial is from the Community part of tutorial for [Hortonworks Sandbox](http://hortonworks.com/products/sandbox) - a single-node Hadoop cluster running in a virtual machine. Download to run this and other tutorials in the series.
 
