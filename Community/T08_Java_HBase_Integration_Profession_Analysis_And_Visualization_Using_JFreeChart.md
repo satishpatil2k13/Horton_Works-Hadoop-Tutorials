@@ -348,10 +348,10 @@ Remember to change the output file path variables to suit your needs.
 ####Run and Generate Chart
 1. Start the Hortonworks Sandbox VM.
 2. After service has started, go to Eclipse, right click on "HBaseProfessionAnalyser" java class and select "Run -> As Java Application".
-3. Check if the writers list text file has been generated.  Verify if "Joe" is also printed there. ![Writers list text file](images/tutorial-07/writers_list_text_file.png "Writers list text file")
+3. Check if the writers list text file has been generated.  Verify if "Joe" is also printed there. ![Writers list text file](images/tutorial-08/writers_list_text_file.png "Writers list text file")
 3. Check if chart has been generated in the output path specified in code.
 
-![Doctor Specialities Pie Chart](images/tutorial-07/doctor_specialities_pie_chart.jpg "Doctor Specialities Pie Chart")
+![Doctor Specialities Pie Chart](images/tutorial-08/doctor_specialities_pie_chart.jpg "Doctor Specialities Pie Chart")
 
 ####Next Steps
 Tweak the code and play around :)
