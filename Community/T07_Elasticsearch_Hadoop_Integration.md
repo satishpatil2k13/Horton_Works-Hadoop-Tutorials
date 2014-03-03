@@ -22,7 +22,7 @@ Just download [apache.zip](http://download.elasticsearch.org/hadoop/short-video-
 ### Setup
 ####Elasticsearch setup
 
-Launch elasticsearch. We won't enter in details on how Elasticsearch works here as it is not our point. For more information, please refer to [elasticsearch website](http://www.elasticsearch.org/guide/).
+Launch elasticsearch. We won't enter into details on how Elasticsearch works here as it is not our point. For more information, please refer to [elasticsearch website](http://www.elasticsearch.org/guide/).
 
 
 ####Hortonworks Sandbox
@@ -36,7 +36,7 @@ You can now connect to the sandbox using your favorite browser at http://127.0.0
 
 Click on "Go to sandbox", then follow these steps : 
 
-1. In file browser, upload apache.zip (and note the path - for my exemple it will be ```/user/apache```)
+1. In file browser, upload apache.zip (and note the path - for my example it will be ```/user/apache```)
 2. Still in file browser, upload elasticsearch-hadoop jar (as for now elasticsearch-hadoop-1.3.0.M1.jar)
 2. In Hive Query Editor, add elasticsearch-hadoop jar to your query
 3. Then launch the following query (from [Costin Leau tutorial](https://gist.github.com/costin/8025827))
@@ -54,14 +54,14 @@ TBLPROPERTIES('es.resource' = 'demo/hive',
 INSERT OVERWRITE TABLE eslogs SELECT s.time, s.ext, s.ip, s.req, s.res, s.agent FROM logs s;
 ```
 
-You should now have you data injected in your elasticsearch cluster. (Note : I had to run queries seperatly).
+You should now have your data injected in your elasticsearch cluster. (Note : I had to run queries separately).
 
 To check if everything went well, you can now launch Kibana, set it up to crawl ```demo``` index, and you should be done.
 
 #### Query data from elasticsearch
 Next step is to query data from elasticsearch and use it in Hadoop. Back to your sandbox : 
 1. In Hive Query Editor, add elasticsearch-hadoop jar to your query
-2. Then launche the following query
+2. Then launch the following query
 ``` sql
 CREATE EXTERNAL TABLE logses (
     time  TIMESTAMP,
