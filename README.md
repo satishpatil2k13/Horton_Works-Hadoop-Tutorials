@@ -36,3 +36,4 @@ Feel free to contribute tutorials and help the community harness Hadoop!
 * [5 - Use HDFS Explorer to Manage Files on Hortonworks Sandbox](/Community/T05_Use_HDFS_Explorer_To_Manage_Files_On_The_Hortonworks_Sandbox.md) from [RedGate](http://redgate.com)
 * [6 - Java-Hive Integration - Salary Delta Analysis and Visualization Using Hive, Java and JFreeChart](/Community/T06_Java_Hive_Integration_Salary_Delta_Analysis_And_Visualization_Using_JFreeChart.md) from [vivganes](https://github.com/vivganes)
 * [7 - elasticsearch-Hadoop integration](/Community/T07_Elasticsearch_Hadoop_Integration.md) from [yannbrrd](https://github.com/yannbrrd)
+* [8 - Java/HBase Integration](/Community/T08_Java_HBase_Integration_Profession_Analysis_And_Visualization_Using_JFreeChart.md) from [vivganes](https://github.com/vivganes)
