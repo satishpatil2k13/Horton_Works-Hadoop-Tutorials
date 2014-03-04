@@ -4,7 +4,7 @@ This tutorial is from the Community part of tutorial for [Hortonworks Sandbox](h
 
 ### Introduction
 
-This tutorial is a basic step-by-step tutorial to get Hadoop and Elasticsearch talk to each other.
+This tutorial is a basic step-by-step tutorial to get Hadoop and Elasticsearch talk to each other. Video tutorial is available at the [Elasticsearch Hadoop](http://www.elasticsearch.org/videos/search-and-analytics-with-hadoop-and-elasticsearch/) site.
 
 ### Pre-requisites
 
@@ -17,7 +17,7 @@ To follow the steps in this tutorial, your computer must have the following item
 
 ### Files to be downloaded
 
-Just download [apache.zip](http://download.elasticsearch.org/hadoop/short-video-1/apache.zip) from Costin Leau video tutorial.
+Just download [apache.zip](http://download.elasticsearch.org/hadoop/short-video-1/apache.zip) from Costin Leau [video tutorial](http://www.elasticsearch.org/videos/search-and-analytics-with-hadoop-and-elasticsearch/).
 
 ### Setup
 ####Elasticsearch setup
