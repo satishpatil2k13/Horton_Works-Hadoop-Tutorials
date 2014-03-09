@@ -48,7 +48,7 @@ Now, Hive2 Service can be reached from a java program running in Eclipse.
 ####Coding the Java Class
 Create a Java class with name "HiveDataFetcher" and following code in it.
 
-```
+```java
 package com.vivekGanesan.hadoopJavaCharts;
 
 import java.sql.Connection;

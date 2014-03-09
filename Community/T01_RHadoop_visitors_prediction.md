@@ -43,7 +43,7 @@ To enable RHadoop on existing Hadoop cluster the following steps must be applied
 1. install R on each node in Cluster
 2. on each node install RHadoop packages with dependencies
 3. set up env variables; run R from console and check that these variables are accessible  
-				
+    			
 
 Environment variables required for RHadoop is 'HADOOP_CMD' and 'HADOOP_STREAMING', details are described in [RHadoop Wiki](https://github.com/RevolutionAnalytics/RHadoop/wiki/rmr). To facilitate development, RStudio server is recommended to be installed. It provides the same GUI for development as standalone RStudio. RStudio WebUI accessible just after instalation at '<host>:8787', use login and password of any non-system user on this host.    
 
@@ -76,7 +76,7 @@ Please, don't guess all calculation here as academic research. This "prediction"
 
 The whole listing is following:  
 
-
+```{r}
     library(rmr2)
 
     # utility function - insert new row into exist data frame
@@ -143,9 +143,9 @@ The whole listing is following:
           map=mapper,
           reduce=reducer
     )
+```
 
 
-
-As soon as MapReduce job finishes, the result will be available at expected directory as several CSV formated files. Directory structure is regular for MapReduce jobs:  
+As soon as MapReduce job finishes, the result will be available at expected directory as several CSV formated files. Directory structure is regular for MapReduce jobs:
 
 [![](./images/tutorial-01/Omniture-hdfs-result.png?raw=true)](./images/tutorial-01/Omniture-hdfs-result.png?raw=true)  

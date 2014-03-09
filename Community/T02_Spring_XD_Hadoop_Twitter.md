@@ -11,7 +11,7 @@ Spring XD can be found at [http://spring.io](http://projects.spring.io/spring-xd
 
 Follow the install instructions and kick up Spring XD with a test stream to make sure it's looking good. 
 
-	create stream --name ticktock --definition "Time | Log"
+    create stream --name ticktock --definition "Time | Log"
 
 That simple instruction should begin showing output in the server terminal window similar to:
 
@@ -181,6 +181,7 @@ This JAR is needed for the Hive queries we'll perform. To do that, we will creat
 
 Once done, the following script creates a fresh table for the twitter logs:
 
+```SQL
 	CREATE EXTERNAL TABLE cyrustweets_raw (
 	   id BIGINT,
 	   created_at STRING,
@@ -213,9 +214,10 @@ Once done, the following script creates a fresh table for the twitter logs:
 	ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 	STORED AS TEXTFILE
 	LOCATION '/xd/cyrustweets'
-	
+```	
 **NB. If you've already completed the previous tutorial, there's no need to recreate the next two tables. Note that the `LOCATION` paths may be different for you.**
 
+```SQL
 	-- Add the dictionary table
 	CREATE EXTERNAL TABLE dictionary (
 	    type string,
@@ -238,11 +240,13 @@ Once done, the following script creates a fresh table for the twitter logs:
 	ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' 
 	STORED AS TEXTFILE
 	LOCATION '/user/hue/data/time_zone_map';
+```
 
 ### Refine the Data
 
 With the essential data now in place, we can refine the data a little.
 
+```SQL
 	CREATE VIEW cyrustweets_simple AS
 	SELECT
   		id,
@@ -261,11 +265,12 @@ With the essential data now in place, we can refine the data a little.
   		m.country 
  	FROM cyrustweets_simple t 
  	LEFT OUTER JOIN time_zone_map m ON t.time_zone = m.time_zone;
- 
+```
 ### Run the Sentiment Analysis 
  
 Then we'll create some views that can be used in the sentiment calculations.
 
+```SQL
 	-- Compute sentiment
 	CREATE VIEW l1 AS 
 	SELECT 
@@ -299,9 +304,10 @@ Then we'll create some views that can be used in the sentiment calculations.
     		ELSE 'neutral'
     	END AS sentiment 
  	FROM l3 GROUP BY id;
- 	
+```	
  Finally, we execute the analysis.
 
+```SQL
 	-- Put everything back together and re-number sentiment
 	CREATE TABLE cyrustweetsanalysis
 		STORED AS RCFile 
@@ -312,9 +318,10 @@ Then we'll create some views that can be used in the sentiment calculations.
     			when 'positive' then 2 
     			when 'neutral' then 1 
     			when 'negative' then 0 
-  			end as sentiment  
+  			end as sentiment 
 		FROM cyrustweets_clean t 
 		LEFT OUTER JOIN tweets_sentiment s on t.id = s.id;
+```
 		
 Once this job has completed, then a quick browse of the data in `cyrustweetsanalysis` will show the results of the analysis.
 
