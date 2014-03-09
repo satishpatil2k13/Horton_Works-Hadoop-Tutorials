@@ -56,7 +56,7 @@ In this example, we are trying to do the following things **using a Java Program
 ####Coding the Java Class
 Create a Java class with name "HBaseProfessionAnalyser" and following code in it.
 
-```
+```java
 package com.vivekGanesan.hbaseJavaIntegration;
 import java.awt.Color;
 import java.awt.GradientPaint;
