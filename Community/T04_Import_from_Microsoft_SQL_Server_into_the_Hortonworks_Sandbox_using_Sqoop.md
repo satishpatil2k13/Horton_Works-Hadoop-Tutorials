@@ -4,15 +4,15 @@
 
 ### Summary
 
-For a simple proof of concept I wanted to get data from MS SQL Server into the Hortonworks Sandbox in an automated fasion using Sqoop. Apache Sqoop provides a way of efficiently transferring bulk data between Apache Hadoop and relational databases. This tutorial will show you how to use Sqoop to import data into the Hortonworks Sandbox from a Microsoft SQL Server data source.
+For a simple proof of concept I wanted to get data from MS SQL Server into the Hortonworks Sandbox in an automated fashion using Sqoop. Apache Sqoop provides a way of efficiently transferring bulk data between Apache Hadoop and relational databases. This tutorial will show you how to use Sqoop to import data into the Hortonworks Sandbox from a Microsoft SQL Server data source.
 
 ### Preparing the SQL Server Environment 
 
-On the SQL Server side there are a few key settings that need to be configured to ensure easy connectivity. For the purposes of this tutorial I’m assuming you’ll be trying to connect to a local install of SQL Server.
+On the SQL Server side, there are a few key settings that need to be configured to ensure easy connectivity. For the purposes of this tutorial, I’m assuming you’ll be trying to connect to a local install of SQL Server.
 
 #### Create a login using SQL Server Authentication
 
-When you create this user make sure to put on your DBA hat and grant all the permissions necessary to connect and access the data (Server Roles, User Mapping)
+Let's start by creating a user in SQL Server.  When you create this user make sure to put on your DBA hat and grant all the permissions necessary to connect and access the data (Server Roles, User Mapping)
 ![Alt text](./images/tutorial-04/screenshot01.png)
 
 
@@ -23,7 +23,7 @@ Make sure Mixed Mode Authentication is enabled at the server level so that the n
 
 #### Enable TCP/IP Network Protocol
 
-If you’re trying this against a local install of SQL Server chances are good that the default configuration is set to use the Shared Memory Network Protocol. You can check this setting by running the script below in SQL.
+If you’re trying this against a local install of SQL Server, chances are good that the default configuration is set to use the Shared Memory Network Protocol. You can check this setting by running the script below in SQL.
 ```sql
 SELECT 
    CONNECTIONPROPERTY('net_transport') AS net_transport,
@@ -38,7 +38,7 @@ If the code returns Shared Memory as the net_transport (as shown below), you’l
 
 ![Alt text](./images/tutorial-04/screenshot03.png)
 
-Once you have Shared Memory disabled the code should return an IP address. Make note of the IP address and the Local TCP Port number as we’ll be using them later in the Sqoop connection string.
+Once you have Shared Memory disabled, running the same code (given above) should return an IP address. Make note of the IP address and the Local TCP Port number as we’ll be using them later in the Sqoop connection string.
 
 ![Alt text](./images/tutorial-04/screenshot04.png)
 
@@ -71,17 +71,17 @@ You should now see a folder in the directory called sqljdbc_4.0 when you run the
 
 #### Copy the driver to the Sqoop library
 
-While still in the/usr/local/ directory run the following command to copy the driver out to the Sqoop library folder
+While still in the/usr/local/ directory, run the following command to copy the driver out to the Sqoop library folder
 ```
 cp sqljdbc_4.0/enu/sqljdbc4.jar /usr/lib/sqoop/lib
 ```
-Once this runs you should be able to see the driver in the list of available Sqoop drivers
+Once this runs, you should be able to see the driver in the list of available Sqoop drivers
 ```
 cd /usr/lib/sqoop/lib
 ```
 ![Alt text](./images/tutorial-04/screenshot08.png)
 
-Now that the driver has been added I recommend restarting the Sandbox completely. I’m sure there are ways to restart certain services so that the new driver becomes available but I had a much easier time just rebooting before continuing on.
+Now that the driver has been added, I recommend restarting the Sandbox completely. I’m sure there are ways to restart certain services so that the new driver becomes available but I had a much easier time just rebooting before continuing on.
 
 ### Transfer data using Sqoop
 
@@ -113,9 +113,9 @@ sqoop import --connect "jdbc:sqlserver://192.168.56.1:1433;database=AdentureWork
 ```
 ![Alt text](./images/tutorial-04/screenshot10.png)
 
-Note: the schema argument is specific to the driver and must be passed at the end of the command after an empty -- (dash dash) argument. If you are importing from the default schema of the database (like dbo) you do not need to specify the schema with this additional argument.
+Note: The schema argument is specific to the driver and must be passed at the end of the command after an empty -- (dash dash) argument. If you are importing from the default schema of the database (like dbo) you do not need to specify the schema with this additional argument.
 
-After you execute the command Hadoop is going to go to work and kick off a MapReduce job. You’ll see a lot of information flying past your eyes, but eventually you be left with the following results indicating your table has been successfully imported. (Use Shift+PageUp/PageDown if you want navigate through the command prompt information that flew past which is especially useful in debugging).
+After you execute the command, Hadoop is going to go to work and kick off a MapReduce job. You’ll see a lot of information flying past your eyes, but eventually, you be left with the following results indicating your table has been successfully imported. (Use Shift+PageUp/PageDown if you want navigate through the command prompt information that flew past which is especially useful in debugging).
 
 ![Alt text](./images/tutorial-04/screenshot11.png)
 
