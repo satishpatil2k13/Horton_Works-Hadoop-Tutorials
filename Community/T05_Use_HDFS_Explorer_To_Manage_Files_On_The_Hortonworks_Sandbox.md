@@ -1,6 +1,6 @@
 ## Community Tutorial 05: How to use HDFS Explorer to manage files on the Hortonworks Sandbox
 
-**This tutorial is from the Community part of tutorial for [Hortonworks Sandbox](http://hortonworks.com/products/sandbox) - a single-node Hadoop cluster running in a virtual machine. [Download](http://hortonworks.com/products/sandbox) to run this and other tutorials in the series.** 
+**This tutorial is from the Community part of tutorial for [Hortonworks Sandbox](http://hortonworks.com/products/sandbox) - a single-node Hadoop cluster running in a virtual machine. [Download](http://hortonworks.com/products/sandbox) the Hortonworks Sandbox to run this and other tutorials in the series.** 
 
 **This tutorial was validated with Sandbox 2.0**
 
