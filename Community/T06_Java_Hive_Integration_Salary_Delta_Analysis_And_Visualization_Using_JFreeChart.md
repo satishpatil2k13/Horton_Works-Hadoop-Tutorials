@@ -100,7 +100,7 @@ public class HiveDataFetcher {
 
 Also, create another class "SalaryDifferenceChartPlotter" with the following code.
 
-```
+```java
 package com.vivekGanesan.hadoopJavaCharts;
 
 import java.awt.BasicStroke;
