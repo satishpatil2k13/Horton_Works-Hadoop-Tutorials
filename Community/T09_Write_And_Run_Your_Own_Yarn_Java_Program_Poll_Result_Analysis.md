@@ -247,7 +247,7 @@ The final, consolidated vote count for each candidate can be found in a file pre
 
 ![Job Results](images/tutorial-09/job_results.png "Job Results")
 
-Assuming that you spent approximately an hour, including the setup and running of MapReduce job, you could be ready with the election results by 11 AM.  Then what, party until 5 PM :)
+Assuming that you spent approximately an hour, including the setup and running of MapReduce job, you could be ready with the election results by 11 AM.  Then what? Party until 5 PM :)
 
 ####Next Steps
 Tweak the code and see what other use cases you can solve using Hadoop MapReduce.
