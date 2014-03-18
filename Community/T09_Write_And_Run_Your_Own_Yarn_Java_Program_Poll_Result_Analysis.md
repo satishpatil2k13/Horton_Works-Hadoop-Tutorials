@@ -1,10 +1,10 @@
-## Community Tutorial 09: Write and Run Your Own YARN Java Program - Poll Result Analysis Using YARN, Java and Eclipse
+## Community Tutorial 09: Write and Run Your Own MapReduce Java Program - Poll Result Analysis Using Hadoop, Java and Eclipse
 
 **This tutorial is from the Community part of tutorial for [Hortonworks Sandbox](http://hortonworks.com/products/sandbox) - a single-node Hadoop cluster running in a virtual machine. [Download](http://hortonworks.com/products/sandbox) the Hortonworks Sandbox to run this and other tutorials in the series.**
 
 ### Introduction
 
-Ever wanted to code your own [YARN](http://hadoop.apache.org/docs/r2.3.0/hadoop-yarn/hadoop-yarn-site/YARN.html "YARN") application using Java and run it on Hortonworks Sandbox? This tutorial helps you to do just that :) This tutorial takes up a sample scenario - Poll Result Analysis using YARN, Java and Eclipse. Of course, we will also be using Hue, the Hadoop user interface presented by Hortonworks Sandbox.
+Ever wanted to code your own [MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html "MapReduce") application using Java and run it on Hortonworks Sandbox? This tutorial helps you to do just that :) This tutorial takes up a sample scenario - Poll Result Analysis using Hadoop, Java and Eclipse. Of course, we will also be using Hue, the Hadoop user interface presented by Hortonworks Sandbox.
 
 ### Pre-requisites
 
@@ -25,21 +25,21 @@ To follow the steps in this tutorial, your computer must have the following item
     c. share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-*.jar
 
 ### Explanation of the Use Case
-A fictional use case is presented here, in order to enable you to easily understand the functionality and power of YARN, without finding it overwhelming or boring.
+A fictional use case is presented here, in order to enable you to easily understand the functionality and power of Hadoop MapReduce, without finding it overwhelming or boring.
 
 ####General Elections in Utopia
 In the democratic country of Utopia, the General Elections (Polls) for the position of President was conducted some days ago.  About five million Utopian Citizens participated in the elections with full enthusiasm and cast their votes to the candidate whom they think deserves the position.  Because of large population, the elections were conducted in 1000 polling booths, geographically separated, so that a citizen can vote from his nearest booth.
 
-There were five contestants for the post.  The names of the candidates are as follows:
-1. Jaja
-2. Jiji
-3. Jojo
-4. Juju
-5. Jinjin
+There were five contestants for the post.  The names of the candidates are as follows:  
+1. Jaja  
+2. Jiji  
+3. Jojo  
+4. Juju  
+5. Jinjin  
 
 You are the Chief Election Commissioner, the person responsible for fair conduct of the entire election process.  Now that the polls are over, half of your worries are over.  But, just a half!  The remaining half is to ensure that the vote-counting happens without any error.  You are responsible for announcing the next president of the country.
 
-As the Chief Election Commissioner, you have been given the power to use any resource of the country judiciously, for the purpose of counting votes.  As you have been planning, from the beginning, to use the computational resources of the country for this purpose, you chose Hadoop YARN to do the dirty job of vote counting for you.
+As the Chief Election Commissioner, you have been given the power to use any resource of the country judiciously, for the purpose of counting votes.  As you have been planning, from the beginning, to use the computational resources of the country for this purpose, you chose Hadoop MapReduce to do the dirty job of vote counting for you.
 
 Your pre-planning skills have helped you in taking each vote as an electronic vote, where every vote cast in every polling booth is written into the booth's text (.txt) file as one line.  This one line will be the name of the candidate who received the vote.
 
@@ -65,7 +65,7 @@ You have to announce the results by this evening, before 5 PM.  It is already 10
 3. In the JAR Selection dialog, select the following jars from the extracted Hadoop tar.gz file.
 
         a. share/hadoop/common/hadoop-common-*.jar
-    	b. share/hadoop/mapreduce/hadoop-mapreduce-client-core-*.jar
+        b. share/hadoop/mapreduce/hadoop-mapreduce-client-core-*.jar
     	c. share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-*.jar
 
 ![Eclipse Build Path Settings](images/tutorial-09/eclipse_build_path_settings.png "Eclipse Build Path Settings")
@@ -115,16 +115,15 @@ public class VoteCountReducer extends Reducer<Text, IntWritable, Text, IntWritab
 	public void reduce(Text key, Iterable<IntWritable> values, Context output)
 			throws IOException, InterruptedException {
 		int voteCount = 0;
-		Iterator<IntWritable> iterator = values.iterator();
-		while (iterator.hasNext()) {
-			voteCount += iterator.next().get();
-		}		
+		for(IntWritable value: values){
+			voteCount+= value.get();
+		}
 		output.write(key, new IntWritable(voteCount));
 	}
 }
 ```
 
-####Code the YARN Application/Driver Class
+####Code the MapReduce Application/Driver Class
 In the eclipse project created above, create a new Java Class file with name `VoteCountApplication` and write the following code in it.  This will be the Application/Driver Class.
 
 ```java
@@ -216,27 +215,27 @@ Boot up your Hortonworks Sandbox VM.  In the Virtual machine's window, press `Al
 To change to mounted directories, type `cd /media/` and press Enter.  Now, type `ls` and press Enter to bring up a list of shared folders.  This should show `sf_Desktop` as an entry.  This means that you can access ~/Desktop of your computer from within Hortonworks Sandbox VM.
 
 ####Copy JAR to hue Home Directory
-We are going to run our YARN Job as `hue` user.  So, we need to copy the `UtopiaVoteCount.jar` to that user's home directory `/usr/lib/hue`, with permissions for `hue` to execute the same.
+We are going to run our MapReduce Job as `hue` user.  So, we need to copy the `UtopiaVoteCount.jar` to that user's home directory `/usr/lib/hue`, with permissions for `hue` to execute the same.
 
 In the command prompt, enter the command `cp /media/sf_Desktop/UtopiaVoteCount.jar /usr/lib/hue/` and press Enter.
 
 Now, enter the command `cd /usr/lib/hue/ ; chmod 777 UtopiaVoteCount.jar` and press Enter.  This will make the JAR file readable and executable by all.
 
 ####Test Input Data Setup
-For our YARN job to execute, we need test input data.  The test input data is nothing but a set of files, having multiple lines, one name in each line.  So, go to [File Browser](http://localhost:8000/filebrowser/) and create a directory `VoteCountInput` under `/user/hue` directory.  Inside the directory, create two files booth-1.txt and booth-2.txt with sample contents (Multiple lines, one name in each line).
+For our MapReduce job to execute, we need test input data.  The test input data is nothing but a set of files, having multiple lines, one name in each line.  So, go to [File Browser](http://localhost:8000/filebrowser/) and create a directory `VoteCountInput` under `/user/hue` directory.  Inside the directory, create two files booth-1.txt and booth-2.txt with sample contents (Multiple lines, one name in each line).
 
-####Fire YARN Job Execution
-We are going to run our YARN Job as `hue` user.  Let us now change to the user `hue` by typing `su - hue` command pressing enter.  Now, you are the user `hue`.
+####Fire MapReduce Job Execution
+We are going to run our MapReduce Job as `hue` user.  Let us now change to the user `hue` by typing `su - hue` command pressing enter.  Now, you are the user `hue`.
 
-Now, we can use `yarn` command to fire the job. Run the following command :
+Now, we can use `hadoop jar` command to fire the job. Run the following command :
 
 ```
-yarn jar UtopiaVoteCount.jar /user/hue/VoteCountInput /user/hue/VoteCountOutput
+hadoop jar UtopiaVoteCount.jar /user/hue/VoteCountInput /user/hue/VoteCountOutput
 ```
 
 Seeing the way the program is written, the above command means that the input files lie in /user/hue/VoteCountInput directory and the output will be produced in /user/hue/VoteCountOutput directory in HDFS.
 
-####Monitor YARN Job Execution
+####Monitor MapReduce Job Execution
 You can monitor the progress of the triggered job using [Job Browser](http://localhost:8000/jobbrowser/).  If you wish, you could take a peek into the generated log files.
 
 ![Job Progress](images/tutorial-09/job_progress.png "Job Progress")
@@ -248,7 +247,7 @@ The final, consolidated vote count for each candidate can be found in a file pre
 
 ![Job Results](images/tutorial-09/job_results.png "Job Results")
 
-Assuming that you spent approximately an hour, including the setup and running of YARN job, you could be ready with the election results by 11 AM.  Then what, party until 5 PM :)
+Assuming that you spent approximately an hour, including the setup and running of MapReduce job, you could be ready with the election results by 11 AM.  Then what, party until 5 PM :)
 
 ####Next Steps
-Tweak the code and see what other use cases you can solve using YARN MapReduce.
+Tweak the code and see what other use cases you can solve using Hadoop MapReduce.
