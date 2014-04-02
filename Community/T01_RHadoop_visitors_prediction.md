@@ -4,13 +4,11 @@
 
 ### Summary
 
-This tutorial describes how to use RHadoop on Hortonworks Daata Platform, how to facilitate using R on Hadoop to create powerful analytics platform.  
+This tutorial describes how to use RHadoop on Hortonworks Data Platform and how to facilitate using R on Hadoop to create a powerful analytics platform.  
 
 ### Clickstream Data
 
-Clickstream data is an information trail a user leaves behind while
-visiting a website. It is typically captured in semi-structured website
-log files.
+Clickstream data is an information trail a user leaves behind while visiting a website. It is typically captured in semi-structured website log files.
 
 Clickstream data has been described in already exisiting tutorial [10 - Visualizing Website Clickstream Data](../Sandbox/T10_Visualizing_Website_Clickstream_Data.md). In this tutorial the same dataset will be used. So, it must be uploaded into `omniturelogs` table.  
 
@@ -18,14 +16,13 @@ Clickstream data has been described in already exisiting tutorial [10 - Visualiz
 ### R Language
 
 [![](./images/tutorial-01/Rlogo.png?raw=true)](./images/tutorial-01/Rlogo.png?raw=true)
-R is language for Stats, Math and Data Science created by statisticians for statisticians. It contains 5000+ implemented algorithms and 
-impressive 2M+ users with domain knowledge worldwide. However, it has one big disadvantage - all data is placed into memory ... and procesed in one thread.  
+R is language for Stats, Math and Data Science created by statisticians for statisticians. It contains 5000+ implemented algorithms and impressive 2M+ users with domain knowledge worldwide. However, it has one big disadvantage - all data is placed into memory and procesed in one thread.  
 
 ### Using R on Hadoop
 
-Hadoop was developed in Java and Java is the main programming languages for Hadoop. Although Java is main language, you can still use any other language to write MR: for example, Python, R or Ruby. It is called "Streaming API". Of course, not all features available in Java will be available in R, because streaming works through "unix streams", not surprise here. Unfortunately, Streaming API is not easy to be used and that's why RHadoop has been created. It still uses streaming, but brings the following advantages:
-* don’t need to manage key change in Reducer
-* don’t need to control functions output manually
+Hadoop was developed in Java and Java is the main programming languages for Hadoop. Although Java is main language, you can still use any other language to write MapReduce(MR): for example, Python, R or Ruby. It is called "Streaming API". Of course, not all features available in Java will be available in R, because streaming works through "unix streams", not surprise here. Unfortunately, Streaming API is not easy to be used and that's why RHadoop has been created. It still uses streaming, but brings the following advantages:
+* no need to manage key change in Reducer
+* no need to control functions output manually
 * simple MapReduce API for R
 * enables access to files on HDFS 
 * R code can be run on local env/Hadoop without changes  
