@@ -16,11 +16,11 @@ Clickstream data has been described in already exisiting tutorial [10 - Visualiz
 ### R Language
 
 [![](./images/tutorial-01/Rlogo.png?raw=true)](./images/tutorial-01/Rlogo.png?raw=true)
-R is language for Stats, Math and Data Science created by statisticians for statisticians. It contains 5000+ implemented algorithms and impressive 2M+ users with domain knowledge worldwide. However, it has one big disadvantage - all data is placed into memory and procesed in one thread.  
+R is a language for Stats, Math and Data Science created by statisticians for statisticians. It contains 5000+ implemented algorithms and impressive 2M+ users with domain knowledge worldwide. However, it has one big disadvantage - all data is placed into memory and processed in one thread.  
 
 ### Using R on Hadoop
 
-Hadoop was developed in Java and Java is the main programming languages for Hadoop. Although Java is main language, you can still use any other language to write MapReduce(MR): for example, Python, R or Ruby. It is called "Streaming API". Of course, not all features available in Java will be available in R, because streaming works through "unix streams", not surprise here. Unfortunately, Streaming API is not easy to be used and that's why RHadoop has been created. It still uses streaming, but brings the following advantages:
+Hadoop was developed in Java and Java is the main programming language for Hadoop. Although Java is main language, you can still use any other language to write MapReduce(MR): for example, Python, R or Ruby. It is called "Streaming API". Not all features available in Java will be available in R, because streaming works through "unix streams". Unfortunately, Streaming API is not easily used and that's why RHadoop has been created. It still uses streaming, but hhahas the following advantages:
 * no need to manage key change in Reducer
 * no need to control functions output manually
 * simple MapReduce API for R
