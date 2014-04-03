@@ -20,7 +20,7 @@ R is a language for Stats, Math and Data Science created by statisticians for st
 
 ### Using R on Hadoop
 
-Hadoop was developed in Java and Java is the main programming language for Hadoop. Although Java is main language, you can still use any other language to write MapReduce(MR): for example, Python, R or Ruby. It is called "Streaming API". Not all features available in Java will be available in R, because streaming works through "unix streams". Unfortunately, Streaming API is not easily used and that's why RHadoop has been created. It still uses streaming, but hhahas the following advantages:
+Hadoop was developed in Java and Java is the main programming language for Hadoop. Although Java is main language, you can still use any other language to write MapReduce(MR): for example, Python, R or Ruby. It is called "Streaming API". Not all features available in Java will be available in R, because streaming works through "unix streams". Unfortunately, Streaming API is not easily used and that's why RHadoop has been created. It still uses streaming, but has the following advantages:
 * no need to manage key change in Reducer
 * no need to control functions output manually
 * simple MapReduce API for R
