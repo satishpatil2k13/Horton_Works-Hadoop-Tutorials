@@ -351,13 +351,13 @@ it groups the records by one or more relations. In this case we just
 specified all rather than specify the exact relation we need.
 
 -   We can use Pig Help again by clicking on
-    `Pig helper->Data                 processing functions->FILTER`
+    `Pig helper->Relational Operators->FILTER`
     template
 -   We can replace `%VAR%` with "`a`" (hint: tab jumps you to the next
     field)
 -   Our `%COND% is "`stock_symbol =='IBM'` " (note: single quotes are
     needed around IBM and don't forget the trailing semi-colon)
--   `Pig helper -> Data processing functions->GROUP BY` template
+-   `Pig helper -> Relational Operators->GROUP BY` template
 -   The first
     `%VAR% is "`b`" and the second`%VAR%`is "`all`". You will need to                 correct an irregularity in the Pig syntax here. Remove the "`BY`"
     in the line of code.
@@ -379,7 +379,7 @@ average of the stock_volume field. To wind it up we just print out the
 results which will be a single floating point number. If our results
 would be used for a future job we can save it back into a table.
 
--   `Pig helper ->Data Processing functions->FOREACH` template will get
+-   `Pig helper ->Relational Operators->FOREACH` template will get
     us the code
 -   Our first `%VAR%` is `c` and the second `%VAR%` is
     "`AVG(b.stock_volume);`"
