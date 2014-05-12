@@ -221,7 +221,7 @@ with Microsoft Excel.
 
 * * * * *
 
-Step 4: Access the Refined Sentiment Data with Microsoft Excel
+Step 4: Access the Refined Sensor Data with Microsoft Excel
 --------------------------------------------------------------
 
 In this section, we will use Microsoft Excel Professional Plus 2013 to
