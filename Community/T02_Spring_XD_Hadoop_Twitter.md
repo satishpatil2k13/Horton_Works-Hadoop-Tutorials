@@ -7,7 +7,7 @@
 This tutorial will build on the previous tutorial - [13 - Refining and Visualizing Sentiment Data](../Sandbox/T13_Refining_And_Visualizing_Sentiment_Data.md) - by using Spring XD to stream in tweets to HDFS. Once in HDFS, we'll use Apache Hive to process and analyze them, before visualizing in a tool.
 
 ##1 - Download and Install Spring XD
-Spring XD can be found at [http://spring.io](http://projects.spring.io/spring-xd/). This tutorial uses the 1.0.0.M3 version, so conventions may change in next release. 
+Spring XD can be found at [http://spring.io](http://projects.spring.io/spring-xd/). This tutorial uses the 1.0.0.M3 version. Conventions may change in the next release. 
 
 Follow the install instructions and kick up Spring XD with a test stream to make sure it's looking good. 
 
@@ -22,10 +22,10 @@ That simple instruction should begin showing output in the server terminal windo
 	2013-10-12 17:18:13
 	2013-10-12 17:18:14
 	
-Congrats, Spring XD is running.
+Congrats! Spring XD is running.
 
 ##2 - Download and Install Hortonworks Sandbox
-The Hortonworks Sandbox environment can be downloaded from [http://hortonworks.com/products/sandbox](http://hortonworks.com/products/sandbox). This tutorial uses the 1.3 version, so conventions may change in the next release. This tutorial also uses the VirtualBox version of the image.
+The Hortonworks Sandbox environment can be downloaded from [http://hortonworks.com/products/sandbox](http://hortonworks.com/products/sandbox). This tutorial uses the 1.3 version.  Conventions may change in the next release. This tutorial also uses the VirtualBox version of the image.
 
 ###Running Sandbox with Bridged Networking
 The current Sandbox uses a NAT adapter with port forwarding by default. This makes it convenient to access Sandbox at 127.0.0.1:8888 but unfortunately, Spring XD appears to locate and attempt to use the internal IP address (in my case that was a fairly standard VirtualBox IP 10.0.2.15).
@@ -45,15 +45,15 @@ Steps to do this are as follows:
 
 * Power on Sandbox
 
-**NB: Sandbox will still say access at 127.0.0.1, but owing to the changes is now incorrect. You can find the IP Address of the Sandbox as it loads:**
+**NB: After booting up fully, sandbox will still say to access at 127.0.0.1 but owing to the changes, this IP address is now incorrect. You can find the IP Address of the Sandbox as it loads:**
 
 ![./images/tutorial-02/screenshot.2.png?raw=true](./images/tutorial-02/screenshot.2.png?raw=true)
 
 In my case, local IP was 10.0.0.27 and I could access the Sandbox at 10.0.0.27:8888.
-Check you can do the same, and then we can configure SpringXD to use Sandbox.
+Check whether you can do the same and then, we can configure SpringXD to use Sandbox.
 
 ###Configuring Spring XD to use Hadoop (Hortonworks Sandbox)
-**NB: If you have Ambari activated on Sandbox, then both it and Spring XD attempt to use port 8080. This means you'll need to run Spring XD with a different port, for example:** `--httpPort 8090`
+**NB: If you have Ambari activated on Sandbox, then both Ambari and Spring XD attempt to use port 8080. This means you'll need to run Spring XD with a different port, for example:** `--httpPort 8090`
 
 ####Step 1 - Edit the Hadoop.properties file
 
@@ -69,11 +69,11 @@ In a terminal window get the server running from the `XD_HOME\XD\` folder:
 
 ####Step 3 - Spin up the Spring XD Client with Hadoop
 
-In a separate terminal window get the shell running from the `XD_HOME\Shell\` folder:
+In a separate terminal window, get the shell running from the `XD_HOME\Shell\` folder:
 
 	./xd-shell --hadoopDistro hadoop11
 
-Then set the namenode for the client using the IP Address of the Sandbox:
+Then, set the namenode for the client using the IP Address of the Sandbox:
 
 	hadoop config fs --namenode hdfs://10.0.0.27:8020
 	
@@ -88,15 +88,15 @@ You should see something like:
 	drwxrwxrwx   - hdfs   hdfs          0 2013-10-12 17:19 /tmp
 	drwxr-xr-x   - hdfs   hdfs          0 2013-06-10 14:39 /user
 	
-Once that's confirmed we can set up a simple test stream. In this case, we can re-create TickTock but store it in HDFS.
+Once that's confirmed, we can set up a simple test stream. In this case, we can re-create TickTock but store it in HDFS.
 
 	stream create --name ticktockhdfs --definition "Time | HDFS"
 	
-Leave it a few seconds, then destroy or undeploy the stream.
+Leave it for a few seconds, then destroy or undeploy the stream.
 
 	stream destroy --name ticktockhdfs
 	
-You can then view the small file that will have been generated in HDFS.
+You can then view the small file that would have been generated in HDFS.
 
 	hadoop fs ls /xd/ticktockhdfs
 	
@@ -118,11 +118,11 @@ Cool, but not so interesting, so let's get to Twitter.
 
 ##3 - Create the Tweet Stream in Spring XD
 
-In order to stream in information from Twitter, then you'll need to set-up a [Twitter Developer app](http://dev.twitter.com) so you can get the necessary keys.
+In order to stream in information from Twitter, then you'll need to set-up a [Twitter Developer app](http://dev.twitter.com) so that you can get the necessary keys.
 
 Once you have the keys, you can add them to `XD_HOME\xd\config\twitter.properties`
 
-In our case, we'll take a look at the stream of current opinion on that current icon of popular culture: Miley Cyrus. 
+In our case, we'll take a look at the stream of current opinion on a current icon of a popular culture: Miley Cyrus. 
 The stream can be set-up as follows with some simple tracking terms:
 	
 	stream create --name cyrustweets --definition "twitterstream --track='mileycyrus, miley cyrus' | hdfs"
@@ -145,7 +145,7 @@ You might want to build up these files for a little while. You can check in on t
 	-rwxr-xr-x   3 root hdfs    1001404 2013-10-12 19:34 /xd/cyrustweets/cyrustweets-8.log
 	-rwxr-xr-x   3 root hdfs    1006052 2013-10-12 19:34 /xd/cyrustweets/cyrustweets-9.log
 	
-The default rollover for the logs is 1MB so there are a lot of files. You might want to increase that or change other options.
+The default rollover for the logs is 1MB. So, there are a lot of files. You might want to increase that or change other options.
 
 After a cup of coffee or two, we should have some reasonable data to begin processing and refining. It took around 30 mins to generate 100MB of log files - clearly a fairly popular topic.
 
@@ -175,7 +175,7 @@ In the [previous tutorial](../Sandbox/T13_Refining_And_Visualizing_Sentiment_Dat
 	
 This will place a JAR called `json-serde-1.1.7-jar-with-dependencies.jar` in the `target` folder.
 
-This JAR is needed for the Hive queries we'll perform. To do that, we will create a new query, first loading the JAR by selecting 'Add File' > 'Upload File' and then finally selecting that JAR for use.
+This JAR is needed for the Hive queries, which we'll perform. To do that, we will create a new query, first loading the JAR by selecting 'Add File' > 'Upload File' and then finally selecting that JAR for use.
 
 ![./images/tutorial-02/screenshot.5.png?raw=true](./images/tutorial-02/screenshot.5.png?raw=true)
 
