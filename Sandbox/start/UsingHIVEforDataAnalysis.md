@@ -3,6 +3,7 @@
 Hive is designed to enable easy data summarization and ad-hoc analysis of large volumes of data. It uses a query language called Hive-QL which is similar to SQL. 
 
 In this tutorial, we will explore the following:
+
 1.  Load a data file into a Hive table
 2.  Create a table using RCFormat
 3.  Query tables
