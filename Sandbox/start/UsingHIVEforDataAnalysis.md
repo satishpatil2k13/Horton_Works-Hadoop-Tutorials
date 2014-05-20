@@ -1,4 +1,4 @@
-##Overview
+###Overview
 
 Hive is designed to enable easy data summarization and ad-hoc analysis of large volumes of data. It uses a query language called Hive-QL which is similar to SQL. 
 
@@ -12,7 +12,7 @@ In this tutorial, we will explore the following:
 6.  PARTITIONED a Table
 7.  Bucketing a Table
 
-##Prerequisites
+###Prerequisites
 
 A working HDP cluster - the easiest way to have a HDP cluster is to download the [Hortonworks Sandbox] [1]
 
