@@ -13,27 +13,35 @@ In this tutorial, we will explore the following:
 7.  Bucketing a Table
 
 ##Prerequisites
+
 A working HDP cluster - the easiest way to have a HDP cluster is to download the [Hortonworks Sandbox] [1]
 
 ###Step 1.   Let's load a data file into a Hive table.
-First of all, download data file from here [click here][2] and name the file as TwitterData.txt . You can copy downloaded file into hdfs folder, /user/hadoop using hdfs fs -put command or Ambari Interface. As the file is small, you can simply open it, copy and create a local file in the sandbox manually as well.
+First of all, download data file from here [click here][2] and name the file as TwitterData.txt . You can copy the downloaded file into hdfs folder, /user/hadoop using hdfs fs -put command (see this [tutorial](http://hortonworks.com/hadoop-tutorial/using-commandline-manage-files-hdfs/)) or the Hue Interface. 
 
-Please See below on how to Upload a file using ambari web UI. 
+As the file is small, you can simply open it, copy and create a local file in the sandbox manually as well.
 
-Please open http://localhost:8000 in your browser.
+We will use the Web UI here. 
+
+Open http://localhost:8000 in your browser.
 
 ![](http://hortonassets.s3.amazonaws.com/tutorial/hive/FileBrowser_opt.jpg)
 
 Now, click on File Browser logo and you will see the following screen. You could load to /user hdfs folder or /user/hue folder. Please choose your hdfs path.
+
 ![](http://hortonassets.s3.amazonaws.com/tutorial/hive/Upload_opt.jpg)
 
 
-Now click on Upload option and select file TwitterData.txt  from your computer, the one you downloaded in the above steps.
+Now click on Upload option and select file TwitterData.txt from your computer.
+
 ![](http://hortonassets.s3.amazonaws.com/tutorial/hive/FileSelect_opt.jpg)
 
-Here is a sample syntax to create a table and load datafile into the table. Make sure you are using the correct path where you loaded the data file in.
+Here is a sample syntax to create a table and load datafile into the table. 
+
+Make sure you are using the correct path for your data file.
+
 Let's create this table and load data.
-Please type "hive" to go to the Hive Prompt.
+Type "hive" at the command prompt after you ssh in to the Sandbox.
 
 ```sql
     CREATE TABLE TwitterExampletextexample(
@@ -87,9 +95,10 @@ Please see the folloiwng log and the results:
 ![](http://hortonassets.s3.amazonaws.com/tutorial/hive/Hive_HW_step3.2.jpg)
 
 ###Step 4. Let's look at Managed tables vs External tables
-Managed tables are created by default with CREATE TABLE statements, whereas External tables are used when you want your tables to point to data file without moving the data files into the Hive Warehouse HDFS home folder, which is the case with managed tables. 
+Managed tables are created by default with CREATE TABLE statements, whereas External tables are used when you want your tables to point to data file in place. 
 
-Here is the syntax for creating these tables. 
+Here is the syntax for creating these tables.
+
 ```sql
 Managed:
     CREATE TABLE ManagedExample(
@@ -113,8 +122,10 @@ External:
     STORED AS TEXTFILE
     location '/user/Twitterdata.txt';
 ```
+
 Also, when you drop a Managed table, it deletes the data, and it also deletes the metadata.
-When you drop an External table, it only deletes the meta data. 
+
+When you drop an External table, it only deletes the metadata. 
 
 As a next step, you could describe the above tables as below and compare the output with managed vs. external tables.
 
@@ -122,10 +133,13 @@ As a next step, you could describe the above tables as below and compare the out
 describe formatted ManagedExample;
 describe formatted ExternalExample;
 ```
-###Step 5. Let's look at Hive ORC File format.
-Optimized Row Columnar (ORC) File format is used as it further compresses data files. It could add performance loss in writing, but there will be performance gain in reading. 
 
-Here is the syntax. Please see that the table is stored as ORC.
+###Step 5. Hive ORC File format.
+
+Optimized Row Columnar (ORC) File format is used as it further compresses data files. It could result in a small performance loss in writing, but there will be huge performance gain in reading. 
+
+Let's try it out. Please see that the table is stored as ORC.
+
 ```sql
     CREATE TABLE ORCFileFormatExample(
         tweetId INT, username BIGINT,
@@ -137,9 +151,11 @@ Here is the syntax. Please see that the table is stored as ORC.
     FIELDS TERMINATED BY '\t'
     STORED AS ORC tblproperties ("orc.compress"="GLIB");
 ```
+
 ###Step 6. Let's create a PARTITIONED Table and load data into.
 Partitions are  horizontal slices of data which allow large sets of data to be segmented into more manageable blocks.
 Here is the sample syntax to create a partitioned table and load data into partitions.
+
 ```sql
 CREATE TABLE PARTITIONEDExample(
 tweetId INT, username BIGINT, txt STRING,favc INT,retweet STRING,retcount INT,followerscount INT) COMMENT 'This is the Twitter streaming data' PARTITIONED BY(CreatedAt STRING, profileLocation STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' STORED AS TEXTFILE;
@@ -149,11 +165,12 @@ INSERT OVERWRITE TABLE PARTITIONEDExample PARTITION (CreatedAt="26 04:50:56 UTC 
 ```
 Here is the log from creating a table with ORC file format and a Partitioned table for your reference.
 
-![enter image description here](http://hortonassets.s3.amazonaws.com/tutorial/hive/Hive_HW_step4.jpg)
+![](http://hortonassets.s3.amazonaws.com/tutorial/hive/Hive_HW_step4.jpg)
 
-![enter image description here](http://hortonassets.s3.amazonaws.com/tutorial/hive/Hive_HW_step4.2.jpg
+![](http://hortonassets.s3.amazonaws.com/tutorial/hive/Hive_HW_step4.2.jpg
 )
 ###Step 7. Let's create a table with Buckets.
+
 Bucketing is a technique that allows to cluster or segment large sets of data to optimize query performance.
 
 Here is an example for creating a table with buckets and load data into it.
