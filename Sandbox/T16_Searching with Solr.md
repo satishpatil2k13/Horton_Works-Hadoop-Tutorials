@@ -8,9 +8,9 @@ After working through this tutorial you will have Solr running on your Hortonwor
   
 1. [Hortonworks HDP Sandbox 2.1](http://hortonworks.com/products/hortonworks-sandbox/)  
   
-2. [Apache Solr 4.7.2](http://digitalemil.de/solrblog/solr-4.7.2.tgz)  
+2. [Apache Solr 4.7.2](http://mirror.reverse.net/pub/apache/lucene/solr/4.7.2/solr-4.7.2.tgz)  
   
-3. [Lucidworks Job Jar](http://digitalemil.de/solrblog/lucidworks-hadoop-1.2.0-0-0.bld009.tar)  
+3. [Lucidworks Job Jar](http://www.lucidworks.com/hortonworks/)  
   
   
 Remarks: I was using VMware’s Fusion to run Sandbox. If you choose Virtualbox things should look the same beside the fact your VM will not have it’s own IP address but rather Solr listening on 127.0.0.1. For convenience I added sandbox as a host to my /etc/hosts file on my Mac. Apache Solr 4.7.2 is the officially by Hortonworks supported version as I’m writing this (May 2014).   
