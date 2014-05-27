@@ -1,5 +1,5 @@
 ###Overview
-In  this tutorial we will walk through how use Apache Solr with Hadoop to index data stored on HDFS. It’s not meant as a general introduction to Solr.
+In  this tutorial we will walk through how to use Apache Solr with Hadoop to index and search data stored on HDFS. It’s not meant as a general introduction to Solr.
   
 After working through this tutorial you will have Solr running on your Hortonworks Sandbox. You will also have a solrconfig and a schema which you can easily adapt to your own use cases. Also you will learn how to use Hadoop MapReduce to index files.    
   
