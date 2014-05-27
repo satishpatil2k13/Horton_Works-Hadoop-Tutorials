@@ -1,6 +1,8 @@
-Welcome to this little tutorial teaching how to run Apache Solr on Sandbox! The focus of this tutorial is how to run Solr in Hadoop with the index (solr data files) stored on HDFS and using a map reduce jobs to index files. It’s not meant as a general introduction to Solr. (I highly recommend the book Solr in Action for further details on pure Solr.) So this here basically is a “Hello World” for Solr on HDP. After working through this tutorial you will have Solr running on your sandbox. You will also have a solrconfig and schema easily adaptable to your own use cases and you will know how to use Hadoop to index files. From here you can then start extending this to fit it your own needs. When you have Sandbox running it should take you no more than 30 mins.   
+###Overview
+In  this tutorial we will walk through how to run Solr in Hadoop with the index (solr data files) stored on HDFS and using a map reduce jobs to index files. It’s not meant as a general introduction to Solr. (I highly recommend the book Solr in Action for further details on pure Solr.) So this here basically is a “Hello World” for Solr on HDP. After working through this tutorial you will have Solr running on your sandbox. You will also have a solrconfig and schema easily adaptable to your own use cases and you will know how to use Hadoop to index files. From here you can then start extending this to fit it your own needs. When you have Sandbox running it should take you no more than 30 mins.   
   
-Let’s start with a list of the ingredients we will need:  
+###Prerequisites
+  
   
 1. [Hortonworks HDP Sandbox 2.1](http://hortonworks.com/products/hortonworks-sandbox/)  
   
@@ -11,6 +13,8 @@ Let’s start with a list of the ingredients we will need:
   
 Remarks: I was using VMware’s Fusion to run Sandbox. If you choose Virtualbox things should look the same beside the fact your VM will not have it’s own IP address but rather Solr listening on 127.0.0.1. For convenience I added sandbox as a host to my /etc/hosts file on my Mac. Apache Solr 4.7.2 is the officially by Hortonworks supported version as I’m writing this (May 2014).   
   
+###Steps
+
 Let’s get it started: Power-up the sandbox with at least 4GB main memory.
     
 ```bash    
@@ -232,5 +236,6 @@ Go back to your browser and enter “HDP” in the field called “q” and pres
 Congratulations!!!  
  
 You installed and integrated Solr on HDP. Indexed a csv file through map reduce and successfully executed a Solr query against the index!   
-Next steps are now installing Solr in SolrCloud mode on an HDP cluster, index real files and create a nice web app so that buisness users can easily search for information stored on Hadoop.   
+
+Next steps are now installing Solr in SolrCloud mode on an HDP cluster, index real files and create a nice web app so that business users can easily search for information stored on Hadoop.   
 I hope this was useful and you had fun!
