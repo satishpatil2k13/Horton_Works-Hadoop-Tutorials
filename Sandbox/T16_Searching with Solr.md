@@ -1,5 +1,7 @@
 ###Overview
-In  this tutorial we will walk through how to run Solr in Hadoop with the index (solr data files) stored on HDFS and using a map reduce jobs to index files. It’s not meant as a general introduction to Solr. (I highly recommend the book Solr in Action for further details on pure Solr.) So this here basically is a “Hello World” for Solr on HDP. After working through this tutorial you will have Solr running on your sandbox. You will also have a solrconfig and schema easily adaptable to your own use cases and you will know how to use Hadoop to index files. From here you can then start extending this to fit it your own needs. When you have Sandbox running it should take you no more than 30 mins.   
+In  this tutorial we will walk through how use Apache Solr with Hadoop to index data stored on HDFS. It’s not meant as a general introduction to Solr. (I highly recommend the book Solr in Action for further details on pure Solr.).
+  
+After working through this tutorial you will have Solr running on your Hortonworks Sandbox. You will also have a solrconfig and a schema which you can easily adapt to your own use cases. Also you will learn how to use Hadoop MapReduce to index files.    
   
 ###Prerequisites
   
