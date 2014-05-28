@@ -40,7 +40,7 @@ Now copy the binaries you downloaded from the list of ingredients above from you
 
 ```bash
     cd ~/Downloads
-    scp solr-4.7.2.tar lucidworks-hadoop-1.2.0-0-0.bld009.tar solr@sandbox:/opt/solr
+    scp solr-4.7.2.tar lucidworks-hadoop-1.2.0-0-0.tar solr@sandbox:/opt/solr
 ```
 
 Next step is creating dummy data we will later on index in Solr and make searchable. As mentioned above this is “Hello World!” so better do not expect big data. The file we are going to index will be four line csv file. Type the following on your Sandbox command prompt:
@@ -68,7 +68,7 @@ Now it’s getting more interesting as we are about to install Solr:
     
     tar xzvf solr-4.7.2.tar 
     // untar is all we need to install Solr! We still need to integrate it into HDP though. 
-    tar xvf lucidworks-hadoop-1.2.0-0-0.bld009.tar
+    tar xvf lucidworks-hadoop-1.2.0-0-0.tar
     ln -s solr-4.7.2 solr
     ln -s lucidworks-hadoop-1.2.0-0-0 jobjar
 ```
