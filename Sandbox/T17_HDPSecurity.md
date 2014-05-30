@@ -5,14 +5,14 @@ In this tutorial we will explore how you can use policies in HDP Security to pro
 ###Prerequisite
 
   - VirtualBox
-  - Download Hortonworks Sandbox + HDP Security
+  - Download [Hortonworks Sandbox + HDP Security](http://hortonassets.s3.amazonaws.com/2.1/hdpsecurity/HDPSecurity_3.5.000-on-HDP-2.1Sandbox.ova)
   
 After you download the VM, import the .ova file to VirtualBox and run the VM.
 
 
 ###Login to HDP Security Administration Console 
 
-Once the VM is running in VirtualBox, login to the HDP Security Administration console at http://localhost:6080/ from your host machine. The username is `admin` and the password is `admin`
+Once the VM is running in VirtualBox, login to the HDP Security Administration console at [http://localhost:6080/](http://localhost:6080/) from your host machine. The username is `admin` and the password is `admin`
 
 
 ![](http://hortonassets.s3.amazonaws.com/tutorial/security/XAPolicyAdminLogin.png)
