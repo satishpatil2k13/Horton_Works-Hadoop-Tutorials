@@ -1,5 +1,4 @@
-> #    INTRODUCTION: Using DgSecure in the Hortonworks Sandbox
->     
+###Introduction
 
 Using DgSecure to discover and secure sensitive data is fairly straightforward and we
 will describe the process through a set of use cases in this document, which will include:
@@ -8,9 +7,7 @@ will describe the process through a set of use cases in this document, which wil
 * Data Protection (Masking & Encryption for Unstructured/Structured Data)
 * Bulk Decryption
 
-> # INSTALLATION   
-
-###Sandbox System Requirements
+### Prerequisites
 
 1. 32-bit and 64-bit OS (Linux, Windows XP, Windows 7, Windows 8).
 2. Minimum 6GB memory available for VM, and minimum 10GB disc space
@@ -77,7 +74,7 @@ point to your downloaded license key and click OK, then click the install button
 
 **.......................................................**
 
-> #USE CASES
+
 
 ###Use Case 1: Define Custom Policy
 
@@ -623,8 +620,8 @@ Results Overview:
 Detailed Results:
 
 ![37](http://dataguise.com/dgc/Sandbox/SandboxImages/Pic37.png)
-> 
-# Use Case 4: Run Encryption Jobs
+
+###Use Case 4: Run Encryption Jobs
 
 
 **Domain Definition**
@@ -835,8 +832,7 @@ Detailed Results:
 
 
 
-> Use Case 5: Run Bulk Decryption Jobs
-> ===========================
+###Use Case 5: Run Bulk Decryption Jobs
 
  
 
