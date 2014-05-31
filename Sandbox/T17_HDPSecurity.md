@@ -46,7 +46,7 @@ Go to Policy Administrator tool and see its access (denied) being audited.
 
 ![](http://hortonassets.s3.amazonaws.com/tutorial/security/HDFSAccessAuditDeniedUseCase.png) 
 
-Now, try the same with user `mktg1`  who belongs to the Marketing group.
+Now, try the same with user `mktg1`  who belongs to the `marketing` group.
 
 ```bash
 [root@sandbox ~]# su - mktg1
@@ -97,7 +97,7 @@ Go to Policy Administrator tool and see its access (denied) being audited.
 ![](http://hortonassets.s3.amazonaws.com/tutorial/security/HIVEAccessAuditDeniedUseCase.png)
 
 
-Run the same beeline command to validate access for `legal1` user-id:
+Run the same beeline command to validate access for `legal1` user-id which belongs to the `legal` group:
 
 ```bash
 $ /usr/lib/hive/bin/beeline -u "jdbc:hive2://localhost:10000/default" -n legal1 -p legal1 -d org.apache.hive.jdbc.HiveDriver
