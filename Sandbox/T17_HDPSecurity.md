@@ -31,7 +31,7 @@ User can review policy details by a single click on the policy. The policy detai
 
 ###Exercise HDFS access scenarios
 
-To validate the policy, please login into the sandbox using username `it1`. User `it1' belongs to the `IT` group.
+To validate the policy, please login into the sandbox using username `it1`. User `it1` belongs to the `IT` group.
 
 ```bash
 [root@sandbox ~]# su - it1
