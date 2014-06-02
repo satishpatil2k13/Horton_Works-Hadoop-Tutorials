@@ -33,6 +33,14 @@ User can review policy details by a single click on the policy. The policy detai
 
 To validate the policy, please login into the sandbox using username `it1`. User `it1` belongs to the `IT` group.
 
+Login to the Sandbox VM using SSH:
+
+```
+ssh -p 2222 root@127.0.0.1
+
+```
+use the password `hadoop`.
+
 ```bash
 [root@sandbox ~]# su - it1
 [it1@sandbox ~]$ id
@@ -61,7 +69,7 @@ PHONE_NUM|PLAN|DATE|STAUS|BALANCE|IMEI|REGION
 ....
 ```
 
-Go to Policy Administrator tool and see its access (granted) being audited.
+Go to Policy Administrator tool, select the Audit tab from the top menu and then refresh using the refresh icon to see access (granted) being audited.
 
 ![](http://hortonassets.s3.amazonaws.com/tutorial/security/HDFSAccessAuditGrantedUseCase.png)
 
@@ -82,13 +90,15 @@ select * from xademo.customer_details
 ```
 
 ```bash
+# su - mktg1
 $ /usr/lib/hive/bin/beeline -u "jdbc:hive2://localhost:10000/default" -n mktg1 -p mktg1 -d org.apache.hive.jdbc.HiveDriver
 Connecting to jdbc:hive2://localhost:10000/default
 Connected to: Apache Hive (version 0.13.0.2.1.1.0-385)
 Driver: Hive JDBC (version 0.13.0.2.1.1.0-385)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
 Beeline version 0.13.0.2.1.1.0-385 by Apache Hive
-0: jdbc:hive2://localhost:10000/default> select * from xademo.customer_details ;
+
+0: jdbc:hive2://localhost:10000/default> select * from xademo.customer_details;
 Error: Error while compiling statement: FAILED: HiveException org.apache.hadoop.hive.ql.metadata.AuthorizationException: User [mktg1] does not have [select] privilege on column [db:xademo,table:customer_details,column:imei] (state=42000,code=40000)
 ```
 
@@ -100,13 +110,15 @@ Go to Policy Administrator tool and see its access (denied) being audited.
 Run the same beeline command to validate access for `legal1` user-id which belongs to the `legal` group:
 
 ```bash
+# su - legal1
 $ /usr/lib/hive/bin/beeline -u "jdbc:hive2://localhost:10000/default" -n legal1 -p legal1 -d org.apache.hive.jdbc.HiveDriver
 Connecting to jdbc:hive2://localhost:10000/default
 Connected to: Apache Hive (version 0.13.0.2.1.1.0-385)
 Driver: Hive JDBC (version 0.13.0.2.1.1.0-385)
 Transaction isolation: TRANSACTION_REPEATABLE_READ
 Beeline version 0.13.0.2.1.1.0-385 by Apache Hive
-0: jdbc:hive2://localhost:10000/default> select * from xademo.customer_details ;
+
+0: jdbc:hive2://localhost:10000/default> select * from xademo.customer_details;
 +--------------------------------+------------------------+--------------------+
 | customer_details.phone_number  | customer_details.plan  | customer_details.d |
 +--------------------------------+------------------------+--------------------+
