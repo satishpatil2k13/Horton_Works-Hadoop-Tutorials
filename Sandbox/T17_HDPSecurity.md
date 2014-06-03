@@ -5,7 +5,7 @@ In this tutorial we will explore how you can use policies in HDP Security to pro
 ###Prerequisite
 
   - VirtualBox
-  - Download [Hortonworks Sandbox + HDP Security](http://hortonassets.s3.amazonaws.com/2.1/hdpsecurity/HDPSecurity_3.5.000-on-HDP-2.1Sandbox.ova)
+  - Download [Hortonworks Sandbox + HDP Security](http://hortonassets.s3.amazonaws.com/2.1/hdpsecurity/XASecure3.5.000-on-HDP-2.1Sandbox.ova)
   
 After you download the VM, import the .ova file to VirtualBox and run the VM.
 
@@ -142,53 +142,75 @@ User can review policy details by a single click on the policy. The policy detai
 
 ###Exercise HBase access scenarios
 
-Run the hbase shell command to validate access for Legal user-id to see if he can create an iemployee table with few column families:
-
+Ensure that the hbase service is running.
 ```bash
-# su - legal1
-[legal1@sandbox ~]$ hbase shell
-2014-05-30 14:47:31,740 INFO  [main] Configuration.deprecation: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
-HBase Shell; enter 'help<RETURN>' for list of supported commands.
-Type "exit<RETURN>" to leave the HBase Shell
-Version 0.98.0.2.1.1.0-385-hadoop2, re7b81b02bc8ba00573e009241b8e15848ae8bfb7, Wed Apr 16 15:23:13 PDT 2014
-
-hbase(main):001:0> create 'iemployee', 'personal', 'payroll', 'skills', 'insurance'
-....
-....
-ERROR: org.apache.hadoop.hbase.security.AccessDeniedException: Insufficient permissions for user 'legal1 (auth:SIMPLE)' (global, action=CREATE)
-...
-...
-...
+[root@sandbox ~]# cd /root
+[root@sandbox ~]# ls
+start_ambari.sh  start_hbase.sh
+[root@sandbox ~]# ./start_hbase.sh
 ```
 
-Go to Policy Administrator tool and see its access (denied) being audited.
 
-![](http://hortonassets.s3.amazonaws.com/tutorial/security/HBaseAccessAuditDeniedUseCase.png)
-
-Run the same beeline command to validate access for mktg1 user-id:
+Run the hbase shell command to validate access for `it1` user-id, who belongs to `IT` group to see if he can view table data from the `iemployee` table:
 
 ```bash
-[root@sandbox xasecure]# su - mktg1
-[mktg1@sandbox ~]$ hbase shell
-2014-05-30 14:54:14,338 INFO  [main] Configuration.deprecation: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+# su - it1
+[it1@sandbox ~]$ hbase shell
+2014-06-02 10:14:37,834 INFO  [main] Configuration.deprecation: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
 HBase Shell; enter 'help<RETURN>' for list of supported commands.
 Type "exit<RETURN>" to leave the HBase Shell
 Version 0.98.0.2.1.1.0-385-hadoop2, re7b81b02bc8ba00573e009241b8e15848ae8bfb7, Wed Apr 16 15:23:13 PDT 2014
 
-hbase(main):001:0> create 'iemployee', 'personal', 'payroll', 'skills', 'insurance'
+hbase(main):001:0> get 'iemployee', '1'
 SLF4J: Class path contains multiple SLF4J bindings.
 SLF4J: Found binding in [jar:file:/usr/lib/hadoop/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
 SLF4J: Found binding in [jar:file:/usr/lib/zookeeper/lib/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
 SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
-0 row(s) in 6.1440 seconds
+COLUMN                               CELL
 
-=> Hbase::Table - iemployee
+ERROR: org.apache.hadoop.hbase.security.AccessDeniedException: Insufficient permissions (table=iemployee, action=READ)
+```
+
+Go to Policy Administrator tool and see its access (denied) being audited.
+
+![](http://hortonassets.s3.amazonaws.com/tutorial/security/HBaseAccessAuditDeniedV1.png)
+
+Run the hbase shell beeline command to validate access for `mktg1` user-id, who belongs to `Marketing` group to see if he can view table data from the `iemployee` table:
+
+```bash
+# su - mktg1
+[mktg1@sandbox ~]$ hbase shell
+2014-06-02 10:18:23,487 INFO  [main] Configuration.deprecation: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.98.0.2.1.1.0-385-hadoop2, re7b81b02bc8ba00573e009241b8e15848ae8bfb7, Wed Apr 16 15:23:13 PDT 2014
+
+hbase(main):001:0> get 'iemployee', '1'
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/lib/hadoop/lib/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/lib/zookeeper/lib/slf4j-log4j12-1.6.1.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+COLUMN                               CELL
+ insurance:dental                    timestamp=1401674430304, value=metlife
+ insurance:health                    timestamp=1401674430289, value=anthem
+ insurance:life                      timestamp=1401674430335, value=metlife
+ insurance:vision                    timestamp=1401674430319, value=visionOne
+ payroll:grade                       timestamp=1401674430182, value=G16
+ payroll:salary                      timestamp=1401674430196, value=250000.00
+ personal:city                       timestamp=1401674430146, value=San Fransisco
+ personal:fname                      timestamp=1401674429979, value=Mike
+ personal:lname                      timestamp=1401674430120, value=Young
+ personal:zip                        timestamp=1401674430162, value=12345
+ skills:interpersonal-rating         timestamp=1401674430274, value=medium
+ skills:management                   timestamp=1401674430221, value=executive,creator,innovative
+12 row(s) in 0.3690 seconds
+
 hbase(main):002:0>
 ```
 
 Go to Policy Administrator tool and see its access (granted) being audited.
 
-![](http://hortonassets.s3.amazonaws.com/tutorial/security/HBaseAccessAuditGrantedUseCase.png)
+![](http://hortonassets.s3.amazonaws.com/tutorial/security/HBaseAccessAuditGrantedV1.png)
 
 ###Summary
 
